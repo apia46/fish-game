@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b3gppoldqatcl"]
+
+[ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://bar.tscn" id="1_80nbo"]
+
+[node name="game" type="Node2D" unique_id=795752810]
+
+[node name="bar" parent="." unique_id=418979998 instance=ExtResource("1_80nbo")]
+offset_left = 277.0
+offset_top = 197.0
+offset_right = 327.0
+offset_bottom = 517.0
