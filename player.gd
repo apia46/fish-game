@@ -1,8 +1,9 @@
 extends Sprite2D
 
 @onready var bar:Panel = get_parent()
+@onready var collision:Area2D = %collision
 
-const HALF_BAR_HEIGHT:float = 25
+const HALF_BAR_HEIGHT:float = 40
 
 var velocity:Vector2 = Vector2.ZERO
 
