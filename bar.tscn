@@ -1,14 +1,19 @@
 [gd_scene format=3 uid="uid://cidlu1tm38goi"]
 
+[ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://bar.gd" id="1_a0eh7"]
 [ext_resource type="PackedScene" uid="uid://bfnvlsuf05tgf" path="res://player.tscn" id="1_sbg6f"]
 [ext_resource type="PackedScene" uid="uid://bpwkp57jo8tkd" path="res://fish.tscn" id="2_a0eh7"]
 
 [node name="bar" type="Panel" unique_id=418979998]
-offset_right = 50.0
+offset_right = 48.0
 offset_bottom = 301.0
+script = ExtResource("1_a0eh7")
 
 [node name="player" parent="." unique_id=1014960489 instance=ExtResource("1_sbg6f")]
-position = Vector2(25, 39.999996)
+unique_name_in_owner = true
+position = Vector2(24, 64)
 
 [node name="fish" parent="." unique_id=1680285713 instance=ExtResource("2_a0eh7")]
-position = Vector2(24.999998, 24.999998)
+unique_name_in_owner = true
+position = Vector2(24, 27.000002)
+scale = Vector2(1.4218749, 1.4218749)

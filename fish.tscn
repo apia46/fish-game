@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://bpwkp57jo8tkd"]
 
-[ext_resource type="Texture2D" uid="uid://dl7wc86sfwfk8" path="res://fish.png" id="1_hgn23"]
+[ext_resource type="Texture2D" uid="uid://dl7wc86sfwfk8" path="res://placeholder_assets/fish.png" id="1_hgn23"]
 [ext_resource type="Script" uid="uid://bvhulfii0l3g" path="res://fish.gd" id="2_6ik3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgn23"]
-size = Vector2(29.440002, 21.120003)
+size = Vector2(30, 22)
 
 [node name="fish" type="Sprite2D" unique_id=1680285713]
-scale = Vector2(1.5624999, 1.5624999)
 texture = ExtResource("1_hgn23")
 script = ExtResource("2_6ik3a")
 
@@ -15,5 +14,5 @@ script = ExtResource("2_6ik3a")
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=1630464348]
-position = Vector2(-1.280001, -0.32000017)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_hgn23")

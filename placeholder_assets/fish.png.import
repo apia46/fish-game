@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dl7wc86sfwfk8"
-path="res://.godot/imported/fish.png-373349fe5906fa24a595247b3fc0d517.ctex"
+path="res://.godot/imported/fish.png-75a5b30aea97641d6ed3129247a6dd32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fish.png"
-dest_files=["res://.godot/imported/fish.png-373349fe5906fa24a595247b3fc0d517.ctex"]
+source_file="res://placeholder_assets/fish.png"
+dest_files=["res://.godot/imported/fish.png-75a5b30aea97641d6ed3129247a6dd32.ctex"]
 
 [params]
 

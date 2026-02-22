@@ -7,23 +7,23 @@
 script = ExtResource("1_e2o6t")
 
 [node name="bar" parent="." unique_id=418979998 instance=ExtResource("1_80nbo")]
-offset_left = 277.0
-offset_top = 197.0
-offset_right = 327.0
-offset_bottom = 517.0
+offset_left = 800.0
+offset_top = 85.0
+offset_right = 848.0
+offset_bottom = 585.0
 
 [node name="progressBar" type="ProgressBar" parent="." unique_id=384789264]
 unique_name_in_owner = true
-offset_left = 236.0
-offset_top = 146.0
-offset_right = 776.0
-offset_bottom = 173.0
+offset_left = 82.0
+offset_top = 122.0
+offset_right = 622.0
+offset_bottom = 149.0
 max_value = 1.0
 step = 0.0
 
 [node name="accuracyLabel" type="Label" parent="." unique_id=1319495304]
 unique_name_in_owner = true
-offset_left = 278.0
-offset_top = 93.0
-offset_right = 686.0
-offset_bottom = 116.0
+offset_left = 140.0
+offset_top = 84.0
+offset_right = 548.0
+offset_bottom = 107.0
