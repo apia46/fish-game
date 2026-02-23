@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpwkp57jo8tkd"]
 
-[ext_resource type="Texture2D" uid="uid://dl7wc86sfwfk8" path="res://placeholder_assets/fish.png" id="1_hgn23"]
+[ext_resource type="Texture2D" uid="uid://dvbhweut0kl3f" path="res://assets/pond fish.png" id="1_hgn23"]
 [ext_resource type="Script" uid="uid://bvhulfii0l3g" path="res://fish.gd" id="2_6ik3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgn23"]

@@ -1,13 +1,68 @@
 [gd_scene format=3 uid="uid://cidlu1tm38goi"]
 
 [ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://bar.gd" id="1_a0eh7"]
+[ext_resource type="Texture2D" uid="uid://dah6gqc8xm413" path="res://assets/bar.png" id="1_sao2x"]
 [ext_resource type="PackedScene" uid="uid://bfnvlsuf05tgf" path="res://player.tscn" id="1_sbg6f"]
 [ext_resource type="PackedScene" uid="uid://bpwkp57jo8tkd" path="res://fish.tscn" id="2_a0eh7"]
+[ext_resource type="Texture2D" uid="uid://xeca7cxskg84" path="res://assets/bubble.png" id="5_sm06w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fhoit"]
+texture = ExtResource("1_sao2x")
+
+[sub_resource type="Gradient" id="Gradient_sao2x"]
+colors = PackedColorArray(0.74, 1, 0.95233333, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sm06w"]
+gradient = SubResource("Gradient_sao2x")
+
+[sub_resource type="Gradient" id="Gradient_fhoit"]
+colors = PackedColorArray(0.74947757, 0.8842423, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_luqre"]
+gradient = SubResource("Gradient_fhoit")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_luqre"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 12, 0)
+emission_shape = 3
+emission_box_extents = Vector3(30, 0, 0)
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 37.629997
+initial_velocity_max = 64.52
+gravity = Vector3(0, -15, 0)
+color_ramp = SubResource("GradientTexture1D_luqre")
+color_initial_ramp = SubResource("GradientTexture1D_sm06w")
 
 [node name="bar" type="Panel" unique_id=418979998]
+clip_contents = true
 offset_right = 48.0
-offset_bottom = 301.0
+offset_bottom = 500.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fhoit")
 script = ExtResource("1_a0eh7")
+
+[node name="bottom" type="Control" parent="." unique_id=220736097]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = -20.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="bottom" unique_id=815171009]
+position = Vector2(20, 40)
+amount = 12
+texture = ExtResource("5_sm06w")
+lifetime = 8.0
+visibility_rect = Rect2(-24, -500, 48, 500)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_luqre")
 
 [node name="player" parent="." unique_id=1014960489 instance=ExtResource("1_sbg6f")]
 unique_name_in_owner = true
