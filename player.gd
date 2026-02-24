@@ -32,4 +32,6 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and !event.echo:
 		match event.keycode:
-			KEY_SPACE: velocity.y *= -0.8 # dash attack
+			KEY_SPACE:
+				velocity.y *= -0.8 # dash attack
+				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.bonus_progress += 0.2
