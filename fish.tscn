@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpwkp57jo8tkd"]
 
-[ext_resource type="Texture2D" uid="uid://dvbhweut0kl3f" path="res://assets/pond fish.png" id="1_hgn23"]
+[ext_resource type="Texture2D" uid="uid://dvbhweut0kl3f" path="res://assets/tutorial_fish_1.png" id="1_hgn23"]
 [ext_resource type="Script" uid="uid://ctco8dknd4bpv" path="res://scripts/TutorialFish.gd" id="2_hgn23"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgn23"]

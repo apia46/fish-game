@@ -19,19 +19,30 @@ var time:float = 0
 var time_unhooked:float = 0
 var time_hooked:float = 0
 var bonus_progress:float = 0
+var phase:int = 0
+
+var active:bool = false
 
 func _process(delta: float) -> void:
+	if !active: return
 	position += velocity * delta
 	position.y = clamp(position.y, self.HALF_HEIGHT, bar.size.y-self.HALF_HEIGHT)
 	if !has_state(STATE_NONPROGRESS):
 		time += delta
-		if bar.player.collision in %collision.get_overlapping_areas():
+		if touching_player():
 			time_hooked += delta
 		else:
 			time_unhooked += delta
-	game.progress_bar.value = clamp((time_hooked - time_unhooked + bonus_progress) / 60, 0, 1)
-	print(time_unhooked)
-	game.accuracy_label.text = "Accuracy: %.1f%%" % ((1 - time_unhooked/time) * 100)
+	var progress:float = clamp((time_hooked - time_unhooked + bonus_progress) / 60, self.PHASES[phase], 1)
+	game.progress_bar.value = progress
+	if progress >= 1: win()
+	elif progress > self.PHASES[phase+1]:
+		phase += 1
+		phase_increased()
+	var accuracy:float = 1 - time_unhooked/time
+	game.accuracy_label.text = "Accuracy: %.1f%%" % (accuracy * 100)
+
+func touching_player() -> bool: return bar.player.collision in %collision.get_overlapping_areas()
 
 func _create_timer(state:int, duration:float, type) -> Timer:
 	var timer:Timer = type.new()
@@ -45,12 +56,7 @@ func _create_timer(state:int, duration:float, type) -> Timer:
 
 func create_looping_timer(state:int, duration:float, reciever:Callable) -> Timer:
 	var timer:Timer = _create_timer(state, duration, Timer)
-	var id:int = timers_id_iter - 1
-	timer.timeout.connect(func() -> void:
-		states.erase(id)
-		timers.erase(id)
-		reciever.call()
-	)
+	timer.timeout.connect(reciever)
 	return timer
 
 func _create_oneshot_timer(state:int, duration:float, reciever:Callable, type) -> Timer:
@@ -79,3 +85,7 @@ func cancel_timers(state:int) -> void:
 			timers[id].queue_free()
 			timers.erase(id)
 			states.erase(id)
+
+@abstract func win() -> void
+
+@abstract func phase_increased() -> void

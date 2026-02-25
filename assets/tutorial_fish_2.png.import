@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvbhweut0kl3f"
-path="res://.godot/imported/pond fish.png-720e6adea8be924d3005e021449b0222.ctex"
+uid="uid://bkqfnap16gbaj"
+path="res://.godot/imported/tutorial_fish_2.png-6baccef0e4710dffd7746130d98a9a41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/pond fish.png"
-dest_files=["res://.godot/imported/pond fish.png-720e6adea8be924d3005e021449b0222.ctex"]
+source_file="res://assets/tutorial_fish_2.png"
+dest_files=["res://.godot/imported/tutorial_fish_2.png-6baccef0e4710dffd7746130d98a9a41.ctex"]
 
 [params]
 

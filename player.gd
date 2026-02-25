@@ -8,7 +8,10 @@ const HALF_HEIGHT:float = 64
 
 var velocity:Vector2 = Vector2.ZERO
 
+var active:bool = false
+
 func _process(delta: float) -> void:
+	if !active: return
 	velocity.y += delta * 100 # gravity
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
 		
@@ -30,6 +33,7 @@ func _process(delta: float) -> void:
 	%velocityLine.default_color = speed_color
 
 func _input(event: InputEvent) -> void:
+	if !active: return
 	if event is InputEventKey and event.pressed and !event.echo:
 		match event.keycode:
 			KEY_SPACE:
