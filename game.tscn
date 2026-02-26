@@ -2,12 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://bar.tscn" id="1_80nbo"]
 [ext_resource type="Script" uid="uid://cp77rbynjvuv6" path="res://game.gd" id="1_e2o6t"]
+[ext_resource type="FontFile" uid="uid://hhax4k20bgds" path="res://resources/CaveatBrush-Regular.ttf" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://056wk8gk3v3x" path="res://intro.tscn" id="4_fc0e3"]
 
-[node name="game" type="Node2D" unique_id=795752810]
+[node name="game" type="Control" unique_id=2132871910]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_e2o6t")
 
 [node name="bar" parent="." unique_id=418979998 instance=ExtResource("1_80nbo")]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 800.0
 offset_top = 85.0
 offset_right = 848.0
@@ -15,6 +24,7 @@ offset_bottom = 585.0
 
 [node name="progressBar" type="ProgressBar" parent="." unique_id=384789264]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 82.0
 offset_top = 122.0
 offset_right = 622.0
@@ -24,16 +34,46 @@ step = 0.0
 
 [node name="accuracyLabel" type="Label" parent="." unique_id=1319495304]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 140.0
 offset_top = 84.0
 offset_right = 548.0
 offset_bottom = 107.0
 
 [node name="startButton" type="Button" parent="." unique_id=1953275521]
+unique_name_in_owner = true
+layout_mode = 0
 offset_left = 518.0
 offset_top = 294.0
 offset_right = 563.0
 offset_bottom = 325.0
 text = "start"
+
+[node name="Label" type="Label" parent="." unique_id=1968094454]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 488.0
+offset_right = 697.0
+offset_bottom = 511.0
+theme_override_fonts/font = ExtResource("3_feb5d")
+theme_override_font_sizes/font_size = 20
+text = "Left click to go up. Keep the fish in your bar."
+
+[node name="tutorial" type="Label" parent="." unique_id=1207708090]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 361.0
+offset_top = 527.0
+offset_right = 700.0
+offset_bottom = 553.0
+theme_override_fonts/font = ExtResource("3_feb5d")
+theme_override_font_sizes/font_size = 20
+text = "Press space to dash, reversing your momentum.
+Dashing also increases progress slightly."
+
+[node name="intro" parent="." unique_id=638270773 instance=ExtResource("4_fc0e3")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="startButton" to="." method="_start"]

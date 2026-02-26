@@ -4,11 +4,12 @@ class_name Player
 @onready var bar:Bar = get_parent()
 @onready var collision:Area2D = %collision
 
-const HALF_HEIGHT:float = 64
-
 var velocity:Vector2 = Vector2.ZERO
 
 var active:bool = false
+
+func half_height() -> float:
+	return 64 * %scale.scale.y
 
 func _process(delta: float) -> void:
 	if !active: return
@@ -16,15 +17,16 @@ func _process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
 		
 	position += velocity * delta
+	%scale.scale.y += (min(0.8+abs(velocity.y)*0.001, 1.2) - %scale.scale.y) * 0.3
 
-	if position.y < HALF_HEIGHT: # bounce off top
-		position.y = HALF_HEIGHT
+	if position.y < half_height(): # bounce off top
+		position.y = half_height()
 		if velocity.y < 0: velocity.y *= -0.8
-	if position.y > bar.size.y - HALF_HEIGHT: # bounce off bottom
-		position.y = bar.size.y - HALF_HEIGHT
+	if position.y > bar.size.y - half_height(): # bounce off bottom
+		position.y = bar.size.y - half_height()
 		if velocity.y > 0: velocity.y *= -0.8
 	
-	%velocityLine.position.y = 64 * sign(velocity.y)
+	%velocityLine.position.y = half_height() * sign(velocity.y)
 	%velocityArrow.position = velocity/5
 	%velocityArrow.polygon[2] = (abs(velocity)/10).max(Vector2.ONE*10) * sign(velocity)
 	%velocityLine.set_point_position(1,velocity/5)

@@ -9,11 +9,6 @@ size = Vector2(128.00002, 128.00002)
 [node name="player" type="Node2D" unique_id=1704506454]
 script = ExtResource("2_i3pqv")
 
-[node name="sprite" type="Sprite2D" parent="." unique_id=1014960489]
-position = Vector2(0, 8.583069e-06)
-scale = Vector2(0.391, 1)
-texture = ExtResource("1_onrkg")
-
 [node name="velocityLine" type="Line2D" parent="." unique_id=1691385520]
 unique_name_in_owner = true
 position = Vector2(0, 64)
@@ -25,12 +20,21 @@ unique_name_in_owner = true
 position = Vector2(0, 10)
 polygon = PackedVector2Array(-11, 0, 11, 0, 0, 8)
 
-[node name="collision" type="Area2D" parent="." unique_id=1065763926]
+[node name="scale" type="Node2D" parent="." unique_id=909581532]
+unique_name_in_owner = true
+
+[node name="sprite" type="Sprite2D" parent="scale" unique_id=1014960489]
+unique_name_in_owner = true
+position = Vector2(0, 8.583069e-06)
+scale = Vector2(0.391, 1)
+texture = ExtResource("1_onrkg")
+
+[node name="collision" type="Area2D" parent="scale" unique_id=1065763926]
 unique_name_in_owner = true
 position = Vector2(0, 8.583069e-06)
 scale = Vector2(0.391, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=1467986361]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scale/collision" unique_id=1467986361]
 position = Vector2(-4.8828133e-06, 3.0517588e-06)
 scale = Vector2(1.0000002, 1.0000001)
 shape = SubResource("RectangleShape2D_onrkg")

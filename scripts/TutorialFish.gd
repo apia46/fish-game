@@ -22,6 +22,7 @@ func phase_increased() -> void:
 			if randf() < 0.2 and velocity.length_squared() > 2000 and velocity.length_squared() < 10000 and !has_state(STATE_DASH):
 				dash()
 		)
+		game.tutorial.visible = true
 		texture = preload("res://assets/tutorial_fish_2.png")
 
 func target() -> void:
