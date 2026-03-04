@@ -7,8 +7,11 @@ const STATE_DASH:int = 3
 const HALF_HEIGHT:float = 16
 const PHASES:Array[float] = [0, 0.5, 1]
 
-var dash_tutorialed:bool = false
-var dash_tutorialing:bool = false
+var tutorial:Tutorial
+
+func _ready() -> void:
+	await game.ready
+	tutorial = game.scene
 
 func start() -> void:
 	modulate.a = 0.5
@@ -24,7 +27,7 @@ func phase_increased() -> void:
 		create_looping_timer(STATE_NONE, 0.5, func() -> void:
 			if randf() < 0.2 and velocity.length_squared() > 2000 and velocity.length_squared() < 10000 and !has_state(STATE_DASH)\
 				and Rect2(Vector2(0,HALF_HEIGHT), bar.size-Vector2(0, HALF_HEIGHT)).has_point(sign(velocity)*-100+position):
-				if !dash_tutorialed: dash_tutorial()
+				if !tutorial.dash_tutorialed: tutorial.dash_tutorial()
 				dash()
 		)
 		texture = preload("res://assets/tutorial_fish_2.png")
@@ -51,26 +54,12 @@ func dash() -> void:
 	tween.tween_property(self, ^"rotation", randf_range(0.4, 1), 0.2).set_ease(Tween.EASE_IN)
 	tween.tween_property(self, ^"rotation", 0, 0.2).set_ease(Tween.EASE_OUT)
 	await get_tree().create_timer(0.3).timeout
-	velocity = sign(velocity) * -100
+	velocity = sign(velocity) * -200
 	var dash_timer:ProcessTimer = create_oneshot_process_timer(STATE_DASH, 1, target)
 	dash_timer.process_function = func(delta:float) -> void:
-		velocity -= sign(velocity) * delta * 100
+		velocity -= sign(velocity) * delta * 80
 
 func win() -> void:
 	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
 	tween.tween_property(Engine, ^"time_scale", 0, 0.3)
 	tween.tween_callback(func(): game.win_text.visible = true)
-
-func dash_tutorial() -> void:
-	dash_tutorialing = true
-	dash_tutorialed = true
-	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
-	tween.tween_property(Engine, ^"time_scale", 0, 0.3)
-	tween.tween_interval(0.5)
-	tween.tween_callback(func(): game.tutorial.visible = true)
-
-func dash_tutorial_finish() -> void:
-	dash_tutorialing = false
-	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
-	tween.tween_property(Engine, ^"time_scale", 1, 0.3)
-	tween.tween_callback(func(): game.tutorial.text = "Press space to reverse your momentum.")
