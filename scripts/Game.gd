@@ -12,5 +12,5 @@ func _start() -> void:
 
 func start_level_1() -> void:
 	%tutorial.queue_free()
-	scene = preload("res://level_1.tscn").instantiate()
+	scene = preload("res://scenes/level_1.tscn").instantiate()
 	add_child(scene)
