@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://civvi7tjxt6v4"]
 
 [ext_resource type="Script" uid="uid://bosieojkk516i" path="res://scripts/Tutorial.gd" id="1_ehuit"]
-[ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://bar.tscn" id="1_yb1ct"]
+[ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://scenes/bar.tscn" id="1_yb1ct"]
 [ext_resource type="FontFile" uid="uid://hhax4k20bgds" path="res://resources/CaveatBrush-Regular.ttf" id="2_ehuit"]
+[ext_resource type="PackedScene" uid="uid://bpwkp57jo8tkd" path="res://scenes/tutorial_fish.tscn" id="3_5mrt3"]
 
 [node name="tutorial" type="Control" unique_id=950066903]
 layout_mode = 3
@@ -28,6 +29,10 @@ offset_right = -106.0
 offset_bottom = 250.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="fish" parent="bar" unique_id=1680285713 instance=ExtResource("3_5mrt3")]
+position = Vector2(25, 30)
+scale = Vector2(1.5, 1.5)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=356784251]
 layout_mode = 1

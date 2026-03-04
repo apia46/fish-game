@@ -9,3 +9,8 @@ class_name Game
 func _start() -> void:
 	%tutorial.start()
 	%startButton.queue_free()
+
+func start_level_1() -> void:
+	%tutorial.queue_free()
+	scene = preload("res://level_1.tscn").instantiate()
+	add_child(scene)
