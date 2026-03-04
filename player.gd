@@ -40,4 +40,5 @@ func _input(event: InputEvent) -> void:
 		match event.keycode:
 			KEY_SPACE:
 				velocity.y *= -0.8 # dash attack
-				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.bonus_progress += 0.2
+				if bar.fish is TutorialFish and bar.fish.dash_tutorialing: bar.fish.dash_tutorial_finish()
+				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.progress += 0.005

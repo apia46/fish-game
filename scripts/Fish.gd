@@ -20,6 +20,7 @@ var time_unhooked:float = 0
 var time_hooked:float = 0
 var bonus_progress:float = 0
 var phase:int = 0
+var progress:float = 0
 
 var active:bool = false
 
@@ -31,9 +32,11 @@ func _process(delta: float) -> void:
 		time += delta
 		if touching_player():
 			time_hooked += delta
+			progress += delta / 40
 		else:
 			time_unhooked += delta
-	var progress:float = clamp((time_hooked - time_unhooked + bonus_progress) / 60, self.PHASES[phase], 1)
+			progress -= delta / 40
+	progress = clamp(progress, self.PHASES[phase], 1)
 	game.progress_bar.value = progress
 	if progress >= 1: win()
 	elif progress > self.PHASES[phase+1]:

@@ -7,6 +7,9 @@ const STATE_DASH:int = 3
 const HALF_HEIGHT:float = 16
 const PHASES:Array[float] = [0, 0.5, 1]
 
+var dash_tutorialed:bool = false
+var dash_tutorialing:bool = false
+
 func start() -> void:
 	modulate.a = 0.5
 	create_looping_timer(STATE_NONPROGRESS, 0.1, func() -> void:
@@ -19,10 +22,11 @@ func start() -> void:
 func phase_increased() -> void:
 	if phase == 1:
 		create_looping_timer(STATE_NONE, 0.5, func() -> void:
-			if randf() < 0.2 and velocity.length_squared() > 2000 and velocity.length_squared() < 10000 and !has_state(STATE_DASH):
+			if randf() < 0.2 and velocity.length_squared() > 2000 and velocity.length_squared() < 10000 and !has_state(STATE_DASH)\
+				and Rect2(Vector2(0,HALF_HEIGHT), bar.size-Vector2(0, HALF_HEIGHT)).has_point(sign(velocity)*-100+position):
+				if !dash_tutorialed: dash_tutorial()
 				dash()
 		)
-		game.tutorial.visible = true
 		texture = preload("res://assets/tutorial_fish_2.png")
 
 func target() -> void:
@@ -39,7 +43,7 @@ func is_target_okay(target_position:Vector2) -> bool:
 	return distance_squared > 10000
 
 func targetting_speed() -> float:
-	return 0.7 if phase >= 1 else 0.4
+	return 0.6 if phase >= 1 else 0.3
 
 func dash() -> void:
 	cancel_timers(STATE_TARGET)
@@ -53,4 +57,20 @@ func dash() -> void:
 		velocity -= sign(velocity) * delta * 100
 
 func win() -> void:
-	pass
+	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
+	tween.tween_property(Engine, ^"time_scale", 0, 0.3)
+	tween.tween_callback(func(): game.win_text.visible = true)
+
+func dash_tutorial() -> void:
+	dash_tutorialing = true
+	dash_tutorialed = true
+	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
+	tween.tween_property(Engine, ^"time_scale", 0, 0.3)
+	tween.tween_interval(0.5)
+	tween.tween_callback(func(): game.tutorial.visible = true)
+
+func dash_tutorial_finish() -> void:
+	dash_tutorialing = false
+	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
+	tween.tween_property(Engine, ^"time_scale", 1, 0.3)
+	tween.tween_callback(func(): game.tutorial.text = "Press space to reverse your momentum.")
