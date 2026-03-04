@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2m2kr1bb5peu"
-path="res://.godot/imported/iner bar.png-6a7c688c6c89fa9a2103bdb14034581f.ctex"
+uid="uid://en7a2l36icid"
+path="res://.godot/imported/text.png-e3ddd9f9b1b7d9168ee5ca3d96c1bf48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/iner bar.png"
-dest_files=["res://.godot/imported/iner bar.png-6a7c688c6c89fa9a2103bdb14034581f.ctex"]
+source_file="res://assets/text.png"
+dest_files=["res://.godot/imported/text.png-e3ddd9f9b1b7d9168ee5ca3d96c1bf48.ctex"]
 
 [params]
 

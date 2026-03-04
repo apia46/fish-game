@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://cidlu1tm38goi"]
 
-[ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://bar.gd" id="1_a0eh7"]
-[ext_resource type="Texture2D" uid="uid://dah6gqc8xm413" path="res://assets/bar.png" id="1_sao2x"]
-[ext_resource type="PackedScene" uid="uid://bfnvlsuf05tgf" path="res://player.tscn" id="1_sbg6f"]
-[ext_resource type="PackedScene" uid="uid://bpwkp57jo8tkd" path="res://fish.tscn" id="2_a0eh7"]
-[ext_resource type="Texture2D" uid="uid://xeca7cxskg84" path="res://assets/bubble.png" id="5_sm06w"]
+[ext_resource type="Texture2D" uid="uid://dah6gqc8xm413" path="res://assets/bar.png" id="1_qdsxc"]
+[ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://scripts/Bar.gd" id="2_efgdo"]
+[ext_resource type="Texture2D" uid="uid://xeca7cxskg84" path="res://assets/bubble.png" id="3_2j1ym"]
+[ext_resource type="PackedScene" uid="uid://bfnvlsuf05tgf" path="res://scenes/player.tscn" id="4_7r073"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fhoit"]
-texture = ExtResource("1_sao2x")
+texture = ExtResource("1_qdsxc")
 
 [sub_resource type="Gradient" id="Gradient_sao2x"]
 colors = PackedColorArray(0.74, 1, 0.95233333, 1, 1, 1, 1, 1)
@@ -39,7 +38,7 @@ clip_contents = true
 offset_right = 48.0
 offset_bottom = 500.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fhoit")
-script = ExtResource("1_a0eh7")
+script = ExtResource("2_efgdo")
 
 [node name="bottom" type="Control" parent="." unique_id=220736097]
 layout_mode = 1
@@ -58,17 +57,12 @@ grow_vertical = 0
 [node name="GPUParticles2D" type="GPUParticles2D" parent="bottom" unique_id=815171009]
 position = Vector2(20, 40)
 amount = 12
-texture = ExtResource("5_sm06w")
+texture = ExtResource("3_2j1ym")
 lifetime = 8.0
 visibility_rect = Rect2(-24, -500, 48, 500)
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_luqre")
 
-[node name="player" parent="." unique_id=1014960489 instance=ExtResource("1_sbg6f")]
+[node name="player" parent="." unique_id=1014960489 instance=ExtResource("4_7r073")]
 unique_name_in_owner = true
 position = Vector2(24, 64)
-
-[node name="fish" parent="." unique_id=1680285713 instance=ExtResource("2_a0eh7")]
-unique_name_in_owner = true
-position = Vector2(24, 27.000002)
-scale = Vector2(1.4218749, 1.4218749)

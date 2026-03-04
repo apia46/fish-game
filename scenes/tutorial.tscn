@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://civvi7tjxt6v4"]
+
+[ext_resource type="Script" uid="uid://bosieojkk516i" path="res://scripts/Tutorial.gd" id="1_ehuit"]
+[ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://scenes/bar.tscn" id="1_yb1ct"]
+[ext_resource type="FontFile" uid="uid://hhax4k20bgds" path="res://resources/CaveatBrush-Regular.ttf" id="2_ehuit"]
+[ext_resource type="PackedScene" uid="uid://bpwkp57jo8tkd" path="res://scenes/tutorial_fish.tscn" id="3_5mrt3"]
+
+[node name="tutorial" type="Control" unique_id=950066903]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ehuit")
+
+[node name="bar" parent="." unique_id=418979998 instance=ExtResource("1_yb1ct")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -250.0
+offset_right = -106.0
+offset_bottom = 250.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="fish" parent="bar" unique_id=1680285713 instance=ExtResource("3_5mrt3")]
+position = Vector2(25, 30)
+scale = Vector2(1.5, 1.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=356784251]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -154.5
+offset_top = -122.0
+offset_right = 154.5
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1367362154]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ehuit")
+theme_override_font_sizes/font_size = 20
+text = "Left click to go up. Keep the fish in your bar."
+
+[node name="tutorialText" type="Label" parent="VBoxContainer" unique_id=300550315]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ehuit")
+theme_override_font_sizes/font_size = 20
+text = "The fish is about to dash in the opposite direction.
+Press space to reverse your momentum."

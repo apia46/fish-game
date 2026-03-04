@@ -1,6 +1,7 @@
 extends Node2D
 class_name Player
 
+@onready var game:Game = $"/root/game"
 @onready var bar:Bar = get_parent()
 @onready var collision:Area2D = %collision
 
@@ -40,5 +41,8 @@ func _input(event: InputEvent) -> void:
 		match event.keycode:
 			KEY_SPACE:
 				velocity.y *= -0.8 # dash attack
-				if bar.fish is TutorialFish and bar.fish.dash_tutorialing: bar.fish.dash_tutorial_finish()
+				if bar.fish is TutorialFish:
+					var tutorial:Tutorial = game.scene
+					if tutorial.dash_tutorialing: tutorial.dash_tutorial_finish()
+					elif !tutorial.dash_tutorialed: tutorial.dash_tutorial_skip()
 				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.progress += 0.005

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://056wk8gk3v3x"]
 
-[ext_resource type="Script" uid="uid://cq41bcmygvmwj" path="res://intro.gd" id="1_ayt76"]
+[ext_resource type="Script" uid="uid://cq41bcmygvmwj" path="res://scripts/Intro.gd" id="1_ayt76"]
 [ext_resource type="FontFile" uid="uid://b2dpnni8aexyi" path="res://resources/Domine-VariableFont_wght.ttf" id="1_s2ta7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ayt76"]
