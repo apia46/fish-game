@@ -9,16 +9,21 @@ var velocity:Vector2 = Vector2.ZERO
 
 var active:bool = false
 
+var stretch_y:float = 0.8
+
 func half_height() -> float:
-	return 64 * %scale.scale.y
+	return 64 * stretch_y
 
 func _process(delta: float) -> void:
+	%collision.scale.y = stretch_y
+	%texture.size.y = 128*stretch_y
+	%texture.position.y = -64*stretch_y
 	if !active: return
 	velocity.y += delta * 100 # gravity
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
 		
 	position += velocity * delta
-	%scale.scale.y += (min(0.8+abs(velocity.y)*0.001, 1.2) - %scale.scale.y) * 0.3
+	stretch_y += (min(0.8+abs(velocity.y)*0.001, 1.2) - stretch_y) * 0.3
 
 	if position.y < half_height(): # bounce off top
 		position.y = half_height()

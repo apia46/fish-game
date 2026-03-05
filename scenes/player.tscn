@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://bfnvlsuf05tgf"]
 
 [ext_resource type="Script" uid="uid://c1s1ec4m5plef" path="res://scripts/Player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://816e05ap1052" path="res://assets/hook.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://bkv8ndl0go45j" path="res://assets/hook_side.png" id="2_dqkch"]
+[ext_resource type="Texture2D" uid="uid://tihwj1m1l3y4" path="res://assets/hook_top.png" id="3_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://dpkmjriwoscvw" path="res://assets/hook_bottom.png" id="4_tuyoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(128.00002, 128.00002)
@@ -20,20 +22,56 @@ unique_name_in_owner = true
 position = Vector2(0, 10)
 polygon = PackedVector2Array(-11, 0, 11, 0, 0, 8)
 
-[node name="scale" type="Node2D" parent="." unique_id=909581532]
+[node name="collision" type="Area2D" parent="." unique_id=1065763926]
 unique_name_in_owner = true
-
-[node name="sprite" type="Sprite2D" parent="scale" unique_id=1014960489]
-unique_name_in_owner = true
-position = Vector2(0, 8.583069e-06)
-texture = ExtResource("2_qhqgy")
-
-[node name="collision" type="Area2D" parent="scale" unique_id=1065763926]
-unique_name_in_owner = true
-position = Vector2(0, 8.583069e-06)
+position = Vector2(-25, -63.999992)
 scale = Vector2(0.391, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="scale/collision" unique_id=1467986361]
-position = Vector2(-4.8828133e-06, 3.0517588e-06)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=1467986361]
+position = Vector2(63.938618, 63.99999)
 scale = Vector2(1.0000002, 1.0000001)
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="texture" type="Control" parent="." unique_id=1425323071]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -64.0
+offset_right = 25.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="side" type="TextureRect" parent="texture" unique_id=1200061884]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dqkch")
+
+[node name="top" type="TextureRect" parent="texture" unique_id=183234271]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+texture = ExtResource("3_qlg0r")
+expand_mode = 5
+
+[node name="bottom" type="TextureRect" parent="texture" unique_id=898968391]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_tuyoq")
+expand_mode = 5

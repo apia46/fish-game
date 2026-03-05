@@ -18,9 +18,9 @@ script = ExtResource("1_lbhrr")
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 82.0
-offset_top = 122.0
+offset_top = 190.0
 offset_right = 622.0
-offset_bottom = 149.0
+offset_bottom = 217.0
 max_value = 1.0
 step = 0.0
 

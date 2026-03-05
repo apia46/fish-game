@@ -4,6 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://scenes/bar.tscn" id="1_yb1ct"]
 [ext_resource type="FontFile" uid="uid://hhax4k20bgds" path="res://resources/CaveatBrush-Regular.ttf" id="2_ehuit"]
 [ext_resource type="PackedScene" uid="uid://bpwkp57jo8tkd" path="res://scenes/tutorial_fish.tscn" id="3_5mrt3"]
+[ext_resource type="Texture2D" uid="uid://16y0tsuugjio" path="res://assets/title/f.png" id="5_tbcdj"]
+[ext_resource type="Texture2D" uid="uid://l7xs3yyc5x1a" path="res://assets/title/i.png" id="6_ej4tf"]
+[ext_resource type="Texture2D" uid="uid://7vcg548jrcq3" path="res://assets/title/s.png" id="7_0hilk"]
+[ext_resource type="Texture2D" uid="uid://daav1wk41cfro" path="res://assets/title/h.png" id="8_wr8iv"]
+[ext_resource type="Texture2D" uid="uid://dfoeyqnqj7ln0" path="res://assets/title/g.png" id="9_e13mp"]
+[ext_resource type="Texture2D" uid="uid://bbl6dbx7f3bor" path="res://assets/title/a.png" id="10_vrdqu"]
+[ext_resource type="Texture2D" uid="uid://bw7ekkg0h1mm4" path="res://assets/title/m.png" id="11_cmspm"]
+[ext_resource type="Texture2D" uid="uid://berl5l1gpbirt" path="res://assets/title/e.png" id="12_ikfo1"]
 
 [node name="tutorial" type="Control" unique_id=950066903]
 layout_mode = 3
@@ -23,9 +31,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -154.0
+offset_left = 72.0
 offset_top = -250.0
-offset_right = -106.0
+offset_right = 120.0
 offset_bottom = 250.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -63,3 +71,35 @@ theme_override_fonts/font = ExtResource("2_ehuit")
 theme_override_font_sizes/font_size = 20
 text = "The fish is about to dash in the opposite direction.
 Press space to reverse your momentum."
+
+[node name="title" type="Control" parent="." unique_id=2112547914]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+
+[node name="f" type="Sprite2D" parent="title" unique_id=923163971]
+texture = ExtResource("5_tbcdj")
+
+[node name="i" type="Sprite2D" parent="title" unique_id=1348944089]
+texture = ExtResource("6_ej4tf")
+
+[node name="s" type="Sprite2D" parent="title" unique_id=23697158]
+texture = ExtResource("7_0hilk")
+
+[node name="h" type="Sprite2D" parent="title" unique_id=1541148395]
+texture = ExtResource("8_wr8iv")
+
+[node name="g" type="Sprite2D" parent="title" unique_id=200064787]
+texture = ExtResource("9_e13mp")
+
+[node name="a" type="Sprite2D" parent="title" unique_id=2074393172]
+texture = ExtResource("10_vrdqu")
+
+[node name="m" type="Sprite2D" parent="title" unique_id=656930243]
+texture = ExtResource("11_cmspm")
+
+[node name="e" type="Sprite2D" parent="title" unique_id=1350784131]
+texture = ExtResource("12_ikfo1")
