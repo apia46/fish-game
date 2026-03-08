@@ -25,7 +25,7 @@ func start() -> void:
 func phase_increased() -> void:
 	if phase == 1:
 		create_looping_timer(STATE_NONE, 0.5, func() -> void:
-			if randf() < 0.2 and velocity.length_squared() > 2000 and velocity.length_squared() < 10000 and !has_state(STATE_DASH)\
+			if randf() < 0.2 and velocity.length_squared() > 1000 and velocity.length_squared() < 10000 and !has_state(STATE_DASH)\
 				and Rect2(Vector2(0,HALF_HEIGHT), bar.size-Vector2(0, HALF_HEIGHT)).has_point(sign(velocity)*-100+position):
 				if !tutorial.dash_tutorialed: tutorial.dash_tutorial()
 				dash()
