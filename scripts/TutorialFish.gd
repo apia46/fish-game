@@ -7,14 +7,9 @@ const STATE_DASH:int = 3
 const HALF_HEIGHT:float = 16
 const PHASES:Array[float] = [0, 0.5, 1]
 
-var tutorial:Tutorial
-
-func _ready() -> void:
-	await game.ready
-	tutorial = game.scene
-
 func start() -> void:
 	modulate.a = 0.5
+	position.x = bar.size.x/2
 	create_looping_timer(STATE_NONPROGRESS, 0.1, func() -> void:
 		if touching_player():
 			modulate.a = 1
@@ -24,11 +19,11 @@ func start() -> void:
 
 func phase_increased() -> void:
 	if phase == 1:
-		create_looping_timer(STATE_NONE, 0.5, func() -> void:
-			if randf() < 0.2 and velocity.length_squared() > 1000 and velocity.length_squared() < 10000 and !has_state(STATE_DASH)\
+		create_looping_timer(STATE_NONE, 0.8, func() -> void:
+			if randf() < 0.4 and velocity.length_squared() > 1000 and velocity.length_squared() < 10000 and !has_state(STATE_DASH)\
 				and Rect2(Vector2(0,HALF_HEIGHT), bar.size-Vector2(0, HALF_HEIGHT)).has_point(sign(velocity)*-100+position):
-				if !tutorial.dash_tutorialed: tutorial.dash_tutorial()
 				dash()
+				if !level.dash_tutorialed: level.dash_tutorial()
 		)
 		texture = preload("res://assets/tutorial_fish_2.png")
 
@@ -39,6 +34,7 @@ func target() -> void:
 		target_position.y = randf_range(HALF_HEIGHT,bar.size.y-HALF_HEIGHT)
 	target_timer.process_function = func(delta:float) -> void:
 		velocity += ((target_position-position) - velocity) * delta * targetting_speed()
+		velocity.x = 0
 
 func is_target_okay(target_position:Vector2) -> bool:
 	var distance_squared:float = target_position.distance_squared_to(position)
@@ -58,8 +54,3 @@ func dash() -> void:
 	var dash_timer:ProcessTimer = create_oneshot_process_timer(STATE_DASH, 1, target)
 	dash_timer.process_function = func(delta:float) -> void:
 		velocity -= sign(velocity) * delta * 80
-
-func win() -> void:
-	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
-	tween.tween_property(Engine, ^"time_scale", 0, 0.3)
-	tween.tween_callback(func(): game.win_text.visible = true)

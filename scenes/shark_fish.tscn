@@ -12,6 +12,7 @@ script = ExtResource("2_dud05")
 metadata/_custom_type_script = "uid://nb8eyorhgaam"
 
 [node name="collision" type="Area2D" parent="." unique_id=558323567]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=114128463]
 position = Vector2(0, -0.5)

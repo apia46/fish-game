@@ -24,6 +24,8 @@ var progress:float = 0
 
 var active:bool = false
 
+@onready var level:Level = game.scene
+
 func _process(delta: float) -> void:
 	if !active: return
 	position += velocity * delta
@@ -38,7 +40,7 @@ func _process(delta: float) -> void:
 			progress -= delta / 40
 	progress = clamp(progress, self.PHASES[phase], 1)
 	game.progress_bar.value = progress
-	if progress >= 1: win()
+	if progress >= 1: level.win()
 	elif progress > self.PHASES[phase+1]:
 		phase += 1
 		phase_increased()
@@ -88,7 +90,5 @@ func cancel_timers(state:int) -> void:
 			timers[id].queue_free()
 			timers.erase(id)
 			states.erase(id)
-
-@abstract func win() -> void
 
 @abstract func phase_increased() -> void

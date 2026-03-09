@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cp77rbynjvuv6" path="res://scripts/Game.gd" id="1_lbhrr"]
 [ext_resource type="FontFile" uid="uid://hhax4k20bgds" path="res://resources/CaveatBrush-Regular.ttf" id="2_iywne"]
-[ext_resource type="PackedScene" uid="uid://civvi7tjxt6v4" path="res://scenes/tutorial.tscn" id="3_p57ef"]
 [ext_resource type="PackedScene" uid="uid://056wk8gk3v3x" path="res://scenes/intro.tscn" id="4_u5sy4"]
 
 [node name="game" type="Control" unique_id=2132871910]
@@ -67,12 +66,9 @@ theme_override_fonts/font = ExtResource("2_iywne")
 theme_override_font_sizes/font_size = 20
 text = "You win!"
 
-[node name="tutorial" parent="." unique_id=950066903 instance=ExtResource("3_p57ef")]
-unique_name_in_owner = true
-layout_mode = 1
-
 [node name="intro" parent="." unique_id=638270773 instance=ExtResource("4_u5sy4")]
 visible = false
+z_index = 1
 layout_mode = 1
 
 [connection signal="pressed" from="startButton" to="." method="_start"]

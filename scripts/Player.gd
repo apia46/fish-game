@@ -9,15 +9,12 @@ var velocity:Vector2 = Vector2.ZERO
 
 var active:bool = false
 
-var stretch_y:float = 0.8
+var stretch_y:float = 1
 
 func half_height() -> float:
 	return 64 * stretch_y
 
 func _process(delta: float) -> void:
-	%collision.scale.y = stretch_y
-	%texture.size.y = 128*stretch_y
-	%texture.position.y = -64*stretch_y
 	if !active: return
 	velocity.y += delta * 100 # gravity
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
@@ -35,10 +32,15 @@ func _process(delta: float) -> void:
 	%velocityLine.position.y = half_height() * sign(velocity.y)
 	%velocityArrow.position = velocity/5
 	%velocityArrow.polygon[2] = (abs(velocity)/10).max(Vector2.ONE*10) * sign(velocity)
+	%velocityArrow.visible = velocity.length_squared() > 5
 	%velocityLine.set_point_position(1,velocity/5)
 	var speed_color:Color = Color.GREEN.blend(Color(Color.RED, abs(velocity.y/400)))
 	%velocityArrow.color = speed_color
 	%velocityLine.default_color = speed_color
+
+	%collision.scale.y = stretch_y
+	%texture.size.y = 128*stretch_y
+	%texture.position.y = -64*stretch_y
 
 func _input(event: InputEvent) -> void:
 	if !active: return
