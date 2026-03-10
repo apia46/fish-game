@@ -5,6 +5,10 @@ class_name Bar
 @onready var fish:Fish = $"fish"
 
 func start() -> void:
-    player.active = true
-    fish.active = true
-    fish.start()
+	player.active = true
+	fish.active = true
+	fish.start()
+
+func stop() -> void:
+	player.active = false
+	fish.active = false

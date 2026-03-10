@@ -13,24 +13,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lbhrr")
 
-[node name="progressBar" type="ProgressBar" parent="." unique_id=384789264]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 82.0
-offset_top = 190.0
-offset_right = 622.0
-offset_bottom = 217.0
-max_value = 1.0
-step = 0.0
-
-[node name="accuracyLabel" type="Label" parent="." unique_id=1319495304]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 140.0
-offset_top = 84.0
-offset_right = 548.0
-offset_bottom = 107.0
-
 [node name="startButton" type="Button" parent="." unique_id=1953275521]
 unique_name_in_owner = true
 layout_mode = 1

@@ -6,6 +6,8 @@ class_name Fish
 @onready var bar:Bar = get_parent()
 @onready var collision:Area2D = %collision
 
+const HALF_HEIGHT:float = 16
+
 var timers_id_iter:int = 0
 
 const STATE_NONE:int = 0
@@ -29,7 +31,7 @@ var active:bool = false
 func _process(delta: float) -> void:
 	if !active: return
 	position += velocity * delta
-	position.y = clamp(position.y, self.HALF_HEIGHT, bar.size.y-self.HALF_HEIGHT)
+	position.y = clamp(position.y, HALF_HEIGHT, bar.size.y-HALF_HEIGHT)
 	if !has_state(STATE_NONPROGRESS):
 		time += delta
 		if touching_player():
@@ -39,13 +41,13 @@ func _process(delta: float) -> void:
 			time_unhooked += delta
 			progress -= delta / 40
 	progress = clamp(progress, self.PHASES[phase], 1)
-	game.progress_bar.value = progress
+	level.hud.progress_bar.value = progress
 	if progress >= 1: level.win()
 	elif progress > self.PHASES[phase+1]:
 		phase += 1
 		phase_increased()
 	var accuracy:float = 1 - time_unhooked/time
-	game.accuracy_label.text = "Accuracy: %.1f%%" % (accuracy * 100)
+	level.hud.accuracy_label.text = "Accuracy: %.1f%%" % (accuracy * 100)
 
 func touching_player() -> bool: return bar.player.collision in %collision.get_overlapping_areas()
 
@@ -91,4 +93,5 @@ func cancel_timers(state:int) -> void:
 			timers.erase(id)
 			states.erase(id)
 
+@abstract func start() -> void
 @abstract func phase_increased() -> void

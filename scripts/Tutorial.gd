@@ -62,9 +62,10 @@ func dash_tutorial_skip() -> void:
 	tutorial_text.text = "Press space to dash, which gives a small amount of progress."
 
 func win() -> void:
+	game.win_text.visible = true
+	%bar.stop()
+
 	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
-	tween.tween_property(Engine, ^"time_scale", 0, 0.3)
-	tween.tween_callback(func(): game.win_text.visible = true)
 	tween.tween_interval(0.5)
 	tween.tween_callback(func(): game.win_text.visible = false)
 	tween.tween_callback(game.start_level_1)

@@ -4,7 +4,6 @@ extends Fish
 const STATE_TARGET:int = 2
 const STATE_DASH:int = 3
 
-const HALF_HEIGHT:float = 16
 const PHASES:Array[float] = [0, 0.5, 1]
 
 func start() -> void:

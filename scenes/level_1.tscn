@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://de33vfaf2ybl" path="res://scripts/Level1.gd" id="1_3hls8"]
 [ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://scenes/bar.tscn" id="2_hbghi"]
 [ext_resource type="PackedScene" uid="uid://djiryeqeslta2" path="res://scenes/shark_fish.tscn" id="3_rus8k"]
+[ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="4_5xbjy"]
 
 [node name="level1" type="Control" unique_id=2110232996]
 layout_mode = 3
@@ -13,26 +14,36 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3hls8")
 
-[node name="c" type="Control" parent="." unique_id=1001552048]
+[node name="pivot" type="Control" parent="." unique_id=1249224386]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -40.0
-offset_top = -212.0
-offset_bottom = 212.0
-grow_horizontal = 0
-grow_vertical = 2
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="n" type="Node2D" parent="c" unique_id=1017569228]
-scale = Vector2(1, 0.99999994)
+[node name="n" type="Node2D" parent="pivot" unique_id=1017569228]
+position = Vector2(536, -536)
+scale = Vector2(1, 0.9999999)
 skew = 0.5707227
 
-[node name="bar" parent="c/n" unique_id=418979998 instance=ExtResource("2_hbghi")]
+[node name="bar" parent="pivot/n" unique_id=418979998 instance=ExtResource("2_hbghi")]
+unique_name_in_owner = true
 offset_left = -190.99998
 offset_right = -142.99998
+scale = Vector2(1.4, 1)
 
-[node name="fish" parent="c/n/bar" unique_id=982120841 instance=ExtResource("3_rus8k")]
+[node name="fish" parent="pivot/n/bar" unique_id=982120841 instance=ExtResource("3_rus8k")]
 position = Vector2(25.827612, 40.403526)
+scale = Vector2(1.5, 1.5)
+
+[node name="hud" parent="pivot" unique_id=98241740 instance=ExtResource("4_5xbjy")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -576.0
+offset_top = -648.0
+offset_right = -576.0
+offset_bottom = -648.0

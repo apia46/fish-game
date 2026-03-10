@@ -12,8 +12,8 @@ func _process(delta: float) -> void:
 	if line < len(lines) - 1:
 		if timer >= 1.5:
 			lines[line].modulate.a = 1
-			if line == 3: timer = -1
-			else: timer = 0
+			if line == 3: timer -= 2.5
+			else: timer -= 1.5
 			line += 1
 	if line < len(lines):
 		lines[line].modulate.a = clamp(timer,0,1)
@@ -25,4 +25,5 @@ func _input(event: InputEvent) -> void:
 			var tween:Tween = get_tree().create_tween()
 			tween.tween_property(self, ^"modulate", Color(Color.WHITE, 0), 0.5)
 			tween.tween_callback(queue_free)
+		elif line == 3: timer = 2.5
 		else: timer = 1.5
