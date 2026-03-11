@@ -2,8 +2,24 @@
 
 [ext_resource type="Script" uid="uid://de33vfaf2ybl" path="res://scripts/Level1.gd" id="1_3hls8"]
 [ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://scenes/bar.tscn" id="2_hbghi"]
+[ext_resource type="Texture2D" uid="uid://b1jx877d5dq4t" path="res://assets/level_1/rain.png" id="2_pa8r4"]
+[ext_resource type="Texture2D" uid="uid://ce7txq0iuvy3y" path="res://assets/level_1/boat_interior.png" id="3_pa8r4"]
 [ext_resource type="PackedScene" uid="uid://djiryeqeslta2" path="res://scenes/shark_fish.tscn" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="4_5xbjy"]
+[ext_resource type="Texture2D" uid="uid://lpkwg2n8anbv" path="res://assets/level_1/wheel.png" id="7_15mv3"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_15mv3"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1152, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 7.000011
+angle_max = 7.000011
+direction = Vector3(0.3, 1, 0)
+spread = 0.0
+initial_velocity_min = 800.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
 
 [node name="level1" type="Control" unique_id=2110232996]
 layout_mode = 3
@@ -13,6 +29,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3hls8")
+
+[node name="bg_pivot" type="Control" parent="." unique_id=1722801825]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="sea" type="ColorRect" parent="bg_pivot" unique_id=1457625748]
+layout_mode = 0
+offset_left = -794.0
+offset_top = -251.0
+offset_right = 810.0
+offset_bottom = 275.0
+color = Color(0.12360755, 0.19679627, 0.36515737, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="bg_pivot" unique_id=1941570379]
+position = Vector2(0, -500)
+amount = 50
+texture = ExtResource("2_pa8r4")
+process_material = SubResource("ParticleProcessMaterial_15mv3")
 
 [node name="pivot" type="Control" parent="." unique_id=1249224386]
 unique_name_in_owner = true
@@ -25,15 +66,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="boat_interior" type="Sprite2D" parent="pivot" unique_id=106223556]
+position = Vector2(0, -324)
+scale = Vector2(2, 2)
+texture = ExtResource("3_pa8r4")
+
 [node name="n" type="Node2D" parent="pivot" unique_id=1017569228]
 position = Vector2(536, -536)
 scale = Vector2(1, 0.9999999)
-skew = 0.5707227
+skew = 0.07853982
 
 [node name="bar" parent="pivot/n" unique_id=418979998 instance=ExtResource("2_hbghi")]
 unique_name_in_owner = true
-offset_left = -190.99998
-offset_right = -142.99998
+offset_left = -144.78976
+offset_top = -45.552155
+offset_right = -96.789764
+offset_bottom = 454.44785
 scale = Vector2(1.4, 1)
 
 [node name="fish" parent="pivot/n/bar" unique_id=982120841 instance=ExtResource("3_rus8k")]
@@ -47,3 +95,9 @@ offset_left = -576.0
 offset_top = -648.0
 offset_right = -576.0
 offset_bottom = -648.0
+
+[node name="wheel" type="Sprite2D" parent="pivot" unique_id=510095220]
+unique_name_in_owner = true
+position = Vector2(0, -100)
+scale = Vector2(2, 2)
+texture = ExtResource("7_15mv3")
