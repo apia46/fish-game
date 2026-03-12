@@ -8,9 +8,20 @@
 [ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="4_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://lpkwg2n8anbv" path="res://assets/level_1/wheel.png" id="7_15mv3"]
 
+[sub_resource type="Gradient" id="Gradient_pa8r4"]
+colors = PackedColorArray(0.32172796, 0.32172796, 0.32172796, 1, 0.61, 0.48189998, 0.24399999, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_15mv3"]
+gradient = SubResource("Gradient_pa8r4")
+width = 1152
+height = 648
+fill_from = Vector2(0.43028846, 0.33760685)
+fill_to = Vector2(0.26923078, 0.67948717)
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_15mv3"]
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(1152, 1, 1)
+emission_shape_offset = Vector3(-300, -800, 0)
+emission_shape_scale = Vector3(1000, 1, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 angle_min = 7.000011
@@ -41,18 +52,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="background" type="TextureRect" parent="bg_pivot" unique_id=17749245]
+layout_mode = 0
+offset_left = -576.0
+offset_top = -648.0
+offset_right = 576.0
+texture = SubResource("GradientTexture2D_15mv3")
+
 [node name="sea" type="ColorRect" parent="bg_pivot" unique_id=1457625748]
 layout_mode = 0
 offset_left = -794.0
 offset_top = -251.0
 offset_right = 810.0
 offset_bottom = 275.0
-color = Color(0.12360755, 0.19679627, 0.36515737, 1)
+color = Color(0.104981445, 0.15215686, 0.25397092, 1)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="bg_pivot" unique_id=1941570379]
-position = Vector2(0, -500)
-amount = 50
+amount = 200
 texture = ExtResource("2_pa8r4")
+lifetime = 1.5
 process_material = SubResource("ParticleProcessMaterial_15mv3")
 
 [node name="pivot" type="Control" parent="." unique_id=1249224386]

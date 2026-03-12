@@ -12,12 +12,17 @@ func start() -> void:
 	%bar.start()
 
 func _process(delta: float) -> void:
-	tilt_velocity += (%bar.size.y*0.3 - %bar.player.position.y) * delta * 0.04
+	var add_velocity:float = (%bar.size.y*0.5 - %bar.player.position.y) * 0.025
+	if abs(add_velocity) < 1: add_velocity = 0
+	else: add_velocity -= 1 * sign(add_velocity)
+	print(add_velocity)
+	tilt_velocity += add_velocity * delta
 	tilt += tilt_velocity * delta
-	if tilt > 10:
-		tilt = 10
+	if abs(tilt) > 10:
+		tilt = 10 * sign(tilt)
+		tilt_velocity = sign(tilt) * -15
 		fail()
-	%wheel.rotation = tilt_velocity * 2
+	%wheel.rotation += (add_velocity*4-%wheel.rotation) * delta
 	%bg_pivot.rotation = tilt * -0.05
 	interior_tilt_velocity += (tilt - interior_tilt) * delta
 	interior_tilt += interior_tilt_velocity * delta
@@ -25,14 +30,14 @@ func _process(delta: float) -> void:
 
 func _physics_process(_delta) -> void:
 	tilt_velocity *= 0.97
-	if tilt < -2 and tilt_velocity <= 0:
-		tilt_velocity *= max(0,-4/tilt-1)
 	interior_tilt_velocity *= 0.99
 
 func fail() -> void:
 	pass
 
 func win() -> void:
-	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
-	tween.tween_property(Engine, ^"time_scale", 0, 0.3)
-	tween.tween_callback(func(): game.win_text.visible = true)
+	game.win_text.visible = true
+	%bar.stop()
+
+	await get_tree().create_timer(0.5).timeout
+	game.win_text.visible = false

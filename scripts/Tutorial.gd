@@ -65,7 +65,6 @@ func win() -> void:
 	game.win_text.visible = true
 	%bar.stop()
 
-	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
-	tween.tween_interval(0.5)
-	tween.tween_callback(func(): game.win_text.visible = false)
-	tween.tween_callback(game.start_level_1)
+	await get_tree().create_timer(0.5).timeout
+	game.win_text.visible = false
+	game.start_level_1()

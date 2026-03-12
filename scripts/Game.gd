@@ -9,8 +9,7 @@ func _ready() -> void:
 	add_child(scene)
 
 func _start() -> void:
-	#scene.start()
-	start_level_1()
+	scene.start()
 	%startButton.queue_free()
 
 func start_level_1() -> void:
