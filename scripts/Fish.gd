@@ -20,7 +20,6 @@ var velocity:Vector2 = Vector2.ZERO
 var time:float = 0
 var time_unhooked:float = 0
 var time_hooked:float = 0
-var bonus_progress:float = 0
 var phase:int = 0
 var progress:float = 0
 
@@ -33,6 +32,7 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	position.y = clamp(position.y, HALF_HEIGHT, bar.size.y-HALF_HEIGHT)
 	if !has_state(STATE_NONPROGRESS):
+		modulate.a = 1
 		time += delta
 		if touching_player():
 			time_hooked += delta
@@ -40,6 +40,8 @@ func _process(delta: float) -> void:
 		else:
 			time_unhooked += delta
 			progress -= delta / 40
+	else:
+		modulate.a = 0.5
 	progress = clamp(progress, self.PHASES[phase], 1)
 	level.hud.progress_bar.value = progress
 	if progress >= 1: level.win()
@@ -66,23 +68,31 @@ func create_looping_timer(state:int, duration:float, reciever:Callable) -> Timer
 	timer.timeout.connect(reciever)
 	return timer
 
-func _create_oneshot_timer(state:int, duration:float, reciever:Callable, type) -> Timer:
+func create_looping_timer_with_id(state:int, duration:float, reciever:Callable) -> Timer:
+	var timer:Timer = _create_timer(state, duration, Timer)
+	var id:int = timers_id_iter - 1
+	timer.timeout.connect(reciever.bind(id))
+	return timer
+
+func _create_oneshot_timer(state:int, duration:float, reciever:Callable, with_id:bool, type) -> Timer:
 	var timer:Timer = _create_timer(state, duration, type)
 	var id:int = timers_id_iter - 1
 	timer.one_shot = true
 	timer.timeout.connect(func() -> void:
-		states.erase(id)
-		timers.erase(id)
-		reciever.call()
-		timer.queue_free()
+		if with_id: reciever.call(id)
+		else: reciever.call()
+		cancel_timer(id)
 	)
 	return timer
 
 func create_oneshot_timer(state:int, duration:float, reciever:Callable) -> Timer:
-	return _create_oneshot_timer(state, duration, reciever, Timer)
+	return _create_oneshot_timer(state, duration, reciever, false, Timer)
+
+func create_oneshot_timer_with_id(state:int, duration:float, reciever:Callable) -> Timer:
+	return _create_oneshot_timer(state, duration, reciever, true, Timer)
 
 func create_oneshot_process_timer(state:int, duration:float, reciever:Callable) -> ProcessTimer:
-	return _create_oneshot_timer(state, duration, reciever, ProcessTimer)
+	return _create_oneshot_timer(state, duration, reciever, false, ProcessTimer)
 
 func has_state(state:int) -> bool: return state in states.values()
 
@@ -92,6 +102,11 @@ func cancel_timers(state:int) -> void:
 			timers[id].queue_free()
 			timers.erase(id)
 			states.erase(id)
+
+func cancel_timer(id:int) -> void:
+	timers[id].queue_free()
+	timers.erase(id)
+	states.erase(id)
 
 @abstract func start() -> void
 @abstract func phase_increased() -> void

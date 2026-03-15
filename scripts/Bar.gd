@@ -1,4 +1,4 @@
-extends Panel
+extends TextureRect
 class_name Bar
 
 @onready var player:Player = %player

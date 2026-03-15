@@ -91,7 +91,6 @@ texture = ExtResource("3_pa8r4")
 
 [node name="n" type="Node2D" parent="pivot" unique_id=1017569228]
 position = Vector2(536, -536)
-scale = Vector2(1, 0.9999999)
 skew = 0.07853982
 
 [node name="bar" parent="pivot/n" unique_id=418979998 instance=ExtResource("2_hbghi")]
@@ -100,7 +99,7 @@ offset_left = -144.78976
 offset_top = -45.552155
 offset_right = -96.789764
 offset_bottom = 454.44785
-scale = Vector2(1.4, 1)
+scale = Vector2(1.1, 1)
 
 [node name="fish" parent="pivot/n/bar" unique_id=982120841 instance=ExtResource("3_rus8k")]
 position = Vector2(25.827612, 40.403526)

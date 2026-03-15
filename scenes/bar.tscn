@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://xeca7cxskg84" path="res://assets/bubble.png" id="3_2j1ym"]
 [ext_resource type="PackedScene" uid="uid://bfnvlsuf05tgf" path="res://scenes/player.tscn" id="4_7r073"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fhoit"]
-texture = ExtResource("1_qdsxc")
-
 [sub_resource type="Gradient" id="Gradient_sao2x"]
 colors = PackedColorArray(0.74, 1, 0.95233333, 1, 1, 1, 1, 1)
 
@@ -33,11 +30,12 @@ gravity = Vector3(0, -15, 0)
 color_ramp = SubResource("GradientTexture1D_luqre")
 color_initial_ramp = SubResource("GradientTexture1D_sm06w")
 
-[node name="bar" type="Panel" unique_id=418979998]
+[node name="bar" type="TextureRect" unique_id=1740004761]
+clip_children = 2
 clip_contents = true
 offset_right = 48.0
 offset_bottom = 500.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_fhoit")
+texture = ExtResource("1_qdsxc")
 script = ExtResource("2_efgdo")
 
 [node name="bottom" type="Control" parent="." unique_id=220736097]

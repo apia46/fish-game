@@ -7,12 +7,9 @@ const STATE_DASH:int = 3
 const PHASES:Array[float] = [0, 0.5, 1]
 
 func start() -> void:
-	modulate.a = 0.5
 	position.x = bar.size.x/2
 	create_looping_timer(STATE_NONPROGRESS, 0.1, func() -> void:
-		if touching_player():
-			modulate.a = 1
-			cancel_timers(STATE_NONPROGRESS)
+		if touching_player(): cancel_timers(STATE_NONPROGRESS)
 	)
 	target()
 

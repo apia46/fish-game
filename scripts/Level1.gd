@@ -15,14 +15,13 @@ func _process(delta: float) -> void:
 	var add_velocity:float = (%bar.size.y*0.5 - %bar.player.position.y) * 0.025
 	if abs(add_velocity) < 1: add_velocity = 0
 	else: add_velocity -= 1 * sign(add_velocity)
-	print(add_velocity)
 	tilt_velocity += add_velocity * delta
 	tilt += tilt_velocity * delta
 	if abs(tilt) > 10:
 		tilt = 10 * sign(tilt)
 		tilt_velocity = sign(tilt) * -15
 		fail()
-	%wheel.rotation += (add_velocity*4-%wheel.rotation) * delta
+	%wheel.rotation += (add_velocity-%wheel.rotation) * delta * 2
 	%bg_pivot.rotation = tilt * -0.05
 	interior_tilt_velocity += (tilt - interior_tilt) * delta
 	interior_tilt += interior_tilt_velocity * delta
@@ -33,7 +32,8 @@ func _physics_process(_delta) -> void:
 	interior_tilt_velocity *= 0.99
 
 func fail() -> void:
-	pass
+	print("FAIL")
+	%bar.fish.progress -= 0.4
 
 func win() -> void:
 	game.win_text.visible = true
