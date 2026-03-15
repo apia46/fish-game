@@ -15,6 +15,7 @@ script = ExtResource("1_lbhrr")
 
 [node name="startButton" type="Button" parent="." unique_id=1953275521]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

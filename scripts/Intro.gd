@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
-		if line == len(lines) - 1 and timer >= 1.5:
+		if line == len(lines) - 1:
 			var tween:Tween = get_tree().create_tween()
 			tween.tween_property(self, ^"modulate", Color(Color.WHITE, 0), 0.5)
 			tween.tween_callback(queue_free)

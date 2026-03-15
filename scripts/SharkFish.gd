@@ -9,10 +9,13 @@ const PHASES:Array[float] = [0, 0.5, 1]
 func start() -> void:
 	position.x = bar.size.x/2
 	target()
-	create_looping_timer(STATE_NONE, 0.8, func() -> void:
-		if randf() < 0.4 and !has_state(STATE_DASH) and position.y < bar.size.y*0.75 and position.y > bar.size.y*0.25:
+	create_looping_timer(STATE_NONE, 0.4, func() -> void:
+		if randf() < dash_probability() and !has_state(STATE_DASH) and position.y < bar.size.y*0.75 and position.y > bar.size.y*0.25:
 			dash()
 	)
+
+func dash_probability() -> float:
+	return 0.8 if phase >= 1 else 0.4
 
 func target() -> void:
 	var target_timer:ProcessTimer = create_oneshot_process_timer(STATE_TARGET, randf_range(1.5, 2), target)
@@ -28,7 +31,7 @@ func is_target_okay(target_position:Vector2) -> bool:
 	return distance_squared > 10000
 
 func targetting_speed() -> float:
-	return 0.7 if phase >= 1 else 0.5
+	return 0.66 if phase >= 1 else 0.5
 
 func dash() -> void:
 	cancel_timers(STATE_TARGET)
@@ -39,9 +42,9 @@ func dash() -> void:
 	velocity = sign(velocity) * -200
 
 	create_oneshot_timer(STATE_NONPROGRESS, 0.5, func():
-			create_looping_timer_with_id(STATE_NONPROGRESS, 0.1, func(timer_id:int):
-				if touching_player(): cancel_timer(timer_id)
-			)
+		create_looping_timer_with_id(STATE_NONPROGRESS, 0.1, func(timer_id:int):
+			if touching_player(): cancel_timer(timer_id)
+		)
 	)
 	var dash_timer:ProcessTimer = create_oneshot_process_timer(STATE_DASH, 1, target)
 	dash_timer.process_function = func(delta:float) -> void:

@@ -2,9 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bosieojkk516i" path="res://scripts/Tutorial.gd" id="1_ehuit"]
 [ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://scenes/bar.tscn" id="1_yb1ct"]
+[ext_resource type="Texture2D" uid="uid://btbdcwdkn2u25" path="res://assets/tutorial/background.png" id="2_0hilk"]
 [ext_resource type="FontFile" uid="uid://hhax4k20bgds" path="res://resources/CaveatBrush-Regular.ttf" id="2_ehuit"]
 [ext_resource type="PackedScene" uid="uid://bpwkp57jo8tkd" path="res://scenes/tutorial_fish.tscn" id="3_5mrt3"]
+[ext_resource type="Texture2D" uid="uid://dwtm3bkwc7aqj" path="res://assets/tutorial/lilypad1.png" id="3_cmspm"]
+[ext_resource type="Script" uid="uid://cxal5rnmcfwqi" path="res://scripts/Lilypad.gd" id="4_ikfo1"]
+[ext_resource type="Texture2D" uid="uid://bsslw55oulxam" path="res://assets/tutorial/lilypad2.png" id="5_dwom6"]
 [ext_resource type="Texture2D" uid="uid://16y0tsuugjio" path="res://assets/title/f.png" id="5_tbcdj"]
+[ext_resource type="Texture2D" uid="uid://2jb5yor5w4l8" path="res://assets/tutorial/lilypad3.png" id="6_bl2xa"]
 [ext_resource type="Texture2D" uid="uid://l7xs3yyc5x1a" path="res://assets/title/i.png" id="6_ej4tf"]
 [ext_resource type="Texture2D" uid="uid://7vcg548jrcq3" path="res://assets/title/s.png" id="7_0hilk"]
 [ext_resource type="Texture2D" uid="uid://daav1wk41cfro" path="res://assets/title/h.png" id="8_wr8iv"]
@@ -13,6 +18,14 @@
 [ext_resource type="Texture2D" uid="uid://bw7ekkg0h1mm4" path="res://assets/title/m.png" id="11_cmspm"]
 [ext_resource type="Texture2D" uid="uid://berl5l1gpbirt" path="res://assets/title/e.png" id="12_ikfo1"]
 [ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="13_ej4tf"]
+
+[sub_resource type="Gradient" id="Gradient_cmspm"]
+colors = PackedColorArray(0.33312637, 0.29342893, 0.60519224, 1, 0.24913359, 0.61111605, 0.92325556, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ikfo1"]
+gradient = SubResource("Gradient_cmspm")
+height = 300
+fill_to = Vector2(0, 0.6282051)
 
 [node name="tutorial" type="Control" unique_id=950066903]
 layout_mode = 3
@@ -23,6 +36,40 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ehuit")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=464869270]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ikfo1")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=315347418]
+position = Vector2(576, 324)
+scale = Vector2(2, 2)
+texture = ExtResource("2_0hilk")
+
+[node name="Lilypad" type="Sprite2D" parent="Background" unique_id=269285573]
+position = Vector2(28.5, 48)
+texture = ExtResource("3_cmspm")
+script = ExtResource("4_ikfo1")
+metadata/_custom_type_script = "uid://cxal5rnmcfwqi"
+
+[node name="Lilypad2" type="Sprite2D" parent="Background" unique_id=685872788]
+position = Vector2(71, 10)
+texture = ExtResource("5_dwom6")
+script = ExtResource("4_ikfo1")
+period_offset = 2.0
+metadata/_custom_type_script = "uid://cxal5rnmcfwqi"
+
+[node name="Lilypad3" type="Sprite2D" parent="Background" unique_id=975342700]
+position = Vector2(119.5, 35.5)
+texture = ExtResource("6_bl2xa")
+script = ExtResource("4_ikfo1")
+period_offset = 4.0
+metadata/_custom_type_script = "uid://cxal5rnmcfwqi"
 
 [node name="bar" parent="." unique_id=418979998 instance=ExtResource("1_yb1ct")]
 unique_name_in_owner = true

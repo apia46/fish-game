@@ -51,6 +51,11 @@ func _process(delta: float) -> void:
 	var accuracy:float = 1 - time_unhooked/time
 	level.hud.accuracy_label.text = "Accuracy: %.1f%%" % (accuracy * 100)
 
+func penalty(amount:float) -> void:
+	progress -= amount/40
+	time_unhooked += amount
+	time += amount
+
 func touching_player() -> bool: return bar.player.collision in %collision.get_overlapping_areas()
 
 func _create_timer(state:int, duration:float, type) -> Timer:
@@ -99,11 +104,11 @@ func has_state(state:int) -> bool: return state in states.values()
 func cancel_timers(state:int) -> void:
 	for id in states.keys():
 		if states[id] == state:
-			timers[id].queue_free()
-			timers.erase(id)
-			states.erase(id)
+			cancel_timer(id)
 
 func cancel_timer(id:int) -> void:
+	assert(timers.get(id))
+	print("cancelling id %s" % id)
 	timers[id].queue_free()
 	timers.erase(id)
 	states.erase(id)
