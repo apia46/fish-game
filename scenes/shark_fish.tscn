@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djiryeqeslta2"]
 
-[ext_resource type="Texture2D" uid="uid://dkity7jg20mh4" path="res://assets/shark_fish.png" id="1_jn6mk"]
+[ext_resource type="Texture2D" uid="uid://dkity7jg20mh4" path="res://assets/level_1/shark_fish.png" id="1_jn6mk"]
 [ext_resource type="Script" uid="uid://nb8eyorhgaam" path="res://scripts/SharkFish.gd" id="2_dud05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvapm"]

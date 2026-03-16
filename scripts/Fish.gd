@@ -86,7 +86,7 @@ func _create_oneshot_timer(state:int, duration:float, reciever:Callable, with_id
 	timer.timeout.connect(func() -> void:
 		if with_id: reciever.call(id)
 		else: reciever.call()
-		cancel_timer(id)
+		cancel_timer(id, "timeout")
 	)
 	return timer
 
@@ -104,11 +104,11 @@ func has_state(state:int) -> bool: return state in states.values()
 func cancel_timers(state:int) -> void:
 	for id in states.keys():
 		if states[id] == state:
-			cancel_timer(id)
+			cancel_timer(id, "cancel timers")
 
-func cancel_timer(id:int) -> void:
+func cancel_timer(id:int, why:String) -> void:
 	assert(timers.get(id))
-	print("cancelling id %s" % id)
+	print("cancelling id %s %s" % [id, why])
 	timers[id].queue_free()
 	timers.erase(id)
 	states.erase(id)

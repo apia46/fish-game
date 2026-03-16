@@ -43,7 +43,7 @@ func dash() -> void:
 
 	create_oneshot_timer(STATE_NONPROGRESS, 0.5, func():
 		create_looping_timer_with_id(STATE_NONPROGRESS, 0.1, func(timer_id:int):
-			if touching_player(): cancel_timer(timer_id)
+			if touching_player(): cancel_timer(timer_id, "shark")
 		)
 	)
 	var dash_timer:ProcessTimer = create_oneshot_process_timer(STATE_DASH, 1, target)

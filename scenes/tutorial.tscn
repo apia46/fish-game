@@ -12,20 +12,25 @@
 [ext_resource type="Texture2D" uid="uid://2jb5yor5w4l8" path="res://assets/tutorial/lilypad3.png" id="6_bl2xa"]
 [ext_resource type="Texture2D" uid="uid://l7xs3yyc5x1a" path="res://assets/title/i.png" id="6_ej4tf"]
 [ext_resource type="Texture2D" uid="uid://7vcg548jrcq3" path="res://assets/title/s.png" id="7_0hilk"]
+[ext_resource type="Texture2D" uid="uid://kjb1w7e8vvr3" path="res://assets/tutorial/cattail1.png" id="7_7a100"]
+[ext_resource type="Script" uid="uid://mvy1ojbkhatl" path="res://scripts/Cattail.gd" id="8_feaue"]
 [ext_resource type="Texture2D" uid="uid://daav1wk41cfro" path="res://assets/title/h.png" id="8_wr8iv"]
+[ext_resource type="Texture2D" uid="uid://yba6coedglub" path="res://assets/tutorial/cattail2.png" id="9_210s6"]
 [ext_resource type="Texture2D" uid="uid://dfoeyqnqj7ln0" path="res://assets/title/g.png" id="9_e13mp"]
+[ext_resource type="Texture2D" uid="uid://drbva04tfiu2" path="res://assets/tutorial/cattail3.png" id="10_5qvs7"]
 [ext_resource type="Texture2D" uid="uid://bbl6dbx7f3bor" path="res://assets/title/a.png" id="10_vrdqu"]
 [ext_resource type="Texture2D" uid="uid://bw7ekkg0h1mm4" path="res://assets/title/m.png" id="11_cmspm"]
+[ext_resource type="Texture2D" uid="uid://ba7jebh8k3rkv" path="res://assets/tutorial/cattail4.png" id="11_qbchm"]
 [ext_resource type="Texture2D" uid="uid://berl5l1gpbirt" path="res://assets/title/e.png" id="12_ikfo1"]
 [ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="13_ej4tf"]
 
 [sub_resource type="Gradient" id="Gradient_cmspm"]
-colors = PackedColorArray(0.33312637, 0.29342893, 0.60519224, 1, 0.24913359, 0.61111605, 0.92325556, 1)
+colors = PackedColorArray(0.29013562, 0.54231673, 0.814012, 1, 0.6348141, 0.81308097, 0.9866304, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ikfo1"]
 gradient = SubResource("Gradient_cmspm")
 height = 300
-fill_to = Vector2(0, 0.6282051)
+fill_to = Vector2(0, 0.1837607)
 
 [node name="tutorial" type="Control" unique_id=950066903]
 layout_mode = 3
@@ -44,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_ikfo1")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=315347418]
@@ -70,6 +76,44 @@ texture = ExtResource("6_bl2xa")
 script = ExtResource("4_ikfo1")
 period_offset = 4.0
 metadata/_custom_type_script = "uid://cxal5rnmcfwqi"
+
+[node name="Cattail" type="Sprite2D" parent="Background" unique_id=1027445588]
+position = Vector2(-200, -3)
+texture = ExtResource("7_7a100")
+offset = Vector2(0, -37)
+script = ExtResource("8_feaue")
+speed = 0.3
+
+[node name="Cattail2" type="Sprite2D" parent="Background" unique_id=734452309]
+position = Vector2(-185, 6)
+texture = ExtResource("9_210s6")
+offset = Vector2(0, -36)
+script = ExtResource("8_feaue")
+speed = 0.5
+period_offset = 5.0
+
+[node name="Cattail3" type="Sprite2D" parent="Background" unique_id=1632828809]
+position = Vector2(-170, 2)
+texture = ExtResource("10_5qvs7")
+offset = Vector2(0, -37)
+script = ExtResource("8_feaue")
+speed = 0.26
+period_offset = 4.0
+
+[node name="Cattail4" type="Sprite2D" parent="Background" unique_id=28705361]
+position = Vector2(-150, 1)
+texture = ExtResource("11_qbchm")
+offset = Vector2(0, -36)
+script = ExtResource("8_feaue")
+speed = 0.4
+period_offset = 3.0
+
+[node name="TextureRect" type="ColorRect" parent="Background" unique_id=1984213956]
+offset_left = -211.0
+offset_top = -9.5
+offset_right = -140.5
+offset_bottom = 11.5
+color = Color(0.2, 0.5372549, 0.7764706, 1)
 
 [node name="bar" parent="." unique_id=418979998 instance=ExtResource("1_yb1ct")]
 unique_name_in_owner = true

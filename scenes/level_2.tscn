@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://doxp7klstwnpg"]
+
+[ext_resource type="PackedScene" uid="uid://cidlu1tm38goi" path="res://scenes/bar.tscn" id="1_jm1iu"]
+[ext_resource type="Script" uid="uid://65km5koeokua" path="res://scripts/Level2.gd" id="1_pbc48"]
+[ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="2_pbc48"]
+[ext_resource type="PackedScene" uid="uid://c68tloyny64hg" path="res://scenes/cat_fish.tscn" id="3_eqxsl"]
+
+[node name="level_2" type="Control" unique_id=634665889]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pbc48")
+
+[node name="bar" parent="." unique_id=1740004761 instance=ExtResource("1_jm1iu")]
+layout_mode = 0
+offset_left = 952.0
+offset_top = 36.0
+offset_right = 1000.0
+offset_bottom = 536.0
+
+[node name="cat_fish" parent="bar" unique_id=348050521 instance=ExtResource("3_eqxsl")]
+position = Vector2(20, 20)
+scale = Vector2(1.5, 1.5)
+
+[node name="hud" parent="." unique_id=98241740 instance=ExtResource("2_pbc48")]
+layout_mode = 1

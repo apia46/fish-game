@@ -21,7 +21,7 @@ func phase_increased() -> void:
 				dash()
 				if !level.dash_tutorialed: level.dash_tutorial()
 		)
-		texture = preload("res://assets/tutorial_fish_2.png")
+		texture = preload("res://assets/tutorial/tutorial_fish_2.png")
 
 func target() -> void:
 	var target_timer:ProcessTimer = create_oneshot_process_timer(STATE_TARGET, randf_range(1.5, 2), target)

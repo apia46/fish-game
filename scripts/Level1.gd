@@ -40,3 +40,4 @@ func win() -> void:
 
 	await get_tree().create_timer(0.5).timeout
 	game.win_text.visible = false
+	game.start_level(preload("res://scenes/level_2.tscn"))

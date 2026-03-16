@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c68tloyny64hg"]
+
+[ext_resource type="Texture2D" uid="uid://dmddbhdir0xia" path="res://assets/level_2/catfish.png" id="1_fv1a6"]
+[ext_resource type="Script" uid="uid://ba7hay3qfebd0" path="res://scripts/CatFish.gd" id="2_5olnl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c3tp"]
+size = Vector2(26, 21)
+
+[node name="cat_fish" type="Sprite2D" unique_id=348050521]
+texture = ExtResource("1_fv1a6")
+script = ExtResource("2_5olnl")
+
+[node name="collision" type="Area2D" parent="." unique_id=1735826683]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=282154450]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_6c3tp")
