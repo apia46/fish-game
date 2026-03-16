@@ -17,8 +17,8 @@ func _process(delta: float) -> void:
 	else: add_velocity -= 1 * sign(add_velocity)
 	tilt_velocity += add_velocity * delta
 	tilt += tilt_velocity * delta
-	if abs(tilt) > 12:
-		tilt = 12 * sign(tilt)
+	if abs(tilt) > 11:
+		tilt = 11 * sign(tilt)
 		tilt_velocity = sign(tilt) * -15
 		fail()
 	%wheel.rotation += (add_velocity-%wheel.rotation) * delta * 2

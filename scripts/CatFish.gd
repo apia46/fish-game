@@ -21,5 +21,9 @@ func target() -> void:
 		velocity += ((target_position-position) - velocity) * delta * targetting_speed()
 		velocity.x = 0
 
+func is_target_okay(target_position:Vector2) -> bool:
+	var distance_squared:float = target_position.distance_squared_to(position)
+	return distance_squared > 10000
+
 func targetting_speed() -> float:
 	return 0.6 if phase >= 1 else 0.3
