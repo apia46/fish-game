@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	position += velocity * delta
 	position.y = clamp(position.y, HALF_HEIGHT, bar.size.y-HALF_HEIGHT)
 	if !has_state(STATE_NONPROGRESS):
-		modulate.a = 1
+		self_modulate.a = 1
 		time += delta
 		if touching_player():
 			time_hooked += delta
@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 			time_unhooked += delta
 			progress -= delta / 40
 	else:
-		modulate.a = 0.5
+		self_modulate.a = 0.5
 	progress = clamp(progress, self.PHASES[phase], 1)
 	level.hud.progress_bar.value = progress
 	if progress >= 1: level.win()
@@ -109,6 +109,7 @@ func cancel_timers(state:int) -> void:
 func cancel_timer(id:int, why:String) -> void:
 	assert(timers.get(id))
 	print("cancelling id %s %s" % [id, why])
+	timers[id].stop()
 	timers[id].queue_free()
 	timers.erase(id)
 	states.erase(id)

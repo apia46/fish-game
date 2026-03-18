@@ -27,4 +27,5 @@ position = Vector2(20, 20)
 scale = Vector2(1.5, 1.5)
 
 [node name="hud" parent="." unique_id=98241740 instance=ExtResource("2_pbc48")]
+unique_name_in_owner = true
 layout_mode = 1
