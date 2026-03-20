@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dmddbhdir0xia" path="res://assets/level_2/catfish.png" id="1_fv1a6"]
 [ext_resource type="Script" uid="uid://ba7hay3qfebd0" path="res://scripts/CatFish.gd" id="2_5olnl"]
 [ext_resource type="Texture2D" uid="uid://ch8qpidtg7d7e" path="res://assets/level_2/telegraph.png" id="3_5olnl"]
-[ext_resource type="Texture2D" uid="uid://b07d2m167xgti" path="res://assets/level_2/swipe.png" id="4_6c3tp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6c3tp"]
 size = Vector2(26, 21)
@@ -28,7 +27,7 @@ shape = SubResource("RectangleShape2D_6c3tp")
 unique_name_in_owner = true
 position = Vector2(0, -10)
 emitting = false
-amount = 1
+amount = 10
 texture = ExtResource("3_5olnl")
 lifetime = 0.5
 direction = Vector2(0, -1)
@@ -39,9 +38,3 @@ initial_velocity_max = 120.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 color_ramp = SubResource("Gradient_6c3tp")
-
-[node name="swipe" type="Sprite2D" parent="." unique_id=1511507463]
-unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
-texture = ExtResource("4_6c3tp")
-offset = Vector2(0, -40)

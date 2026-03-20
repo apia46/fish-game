@@ -90,13 +90,13 @@ func _create_oneshot_timer(state:int, duration:float, reciever:Callable, with_id
 	)
 	return timer
 
-func create_oneshot_timer(state:int, duration:float, reciever:Callable) -> Timer:
+func create_oneshot_timer(state:int, duration:float, reciever:Callable=func():return) -> Timer:
 	return _create_oneshot_timer(state, duration, reciever, false, Timer)
 
 func create_oneshot_timer_with_id(state:int, duration:float, reciever:Callable) -> Timer:
 	return _create_oneshot_timer(state, duration, reciever, true, Timer)
 
-func create_oneshot_process_timer(state:int, duration:float, reciever:Callable) -> ProcessTimer:
+func create_oneshot_process_timer(state:int, duration:float, reciever:Callable=func():return) -> ProcessTimer:
 	return _create_oneshot_timer(state, duration, reciever, false, ProcessTimer)
 
 func has_state(state:int) -> bool: return state in states.values()
