@@ -3,14 +3,18 @@ class_name CatFish
 
 const STATE_TARGET:int = 2
 const STATE_SPECIAL:int = 3
+const STATE_ZOOMIES:int = 4
 
 const PHASES:Array[float] = [0, 1.0/3, 2.0/3, 1]
 
 func start() -> void:
 	position.x = bar.size.x/2
 	create_looping_timer(STATE_NONE, 0.6, func() -> void:
-		if randf() < 0.4 and !has_state(STATE_SPECIAL) and position.y < bar.size.y*0.7 and position.y > bar.size.y*0.3:
+		if has_state(STATE_SPECIAL): return
+		if randf() < swipe_probability() and position.y < bar.size.y*0.7 and position.y > bar.size.y*0.3:
 			swipe(phase+1)
+		elif randf() < 0.2 and phase > 0 and position.y < bar.size.y*0.7 and position.y > bar.size.y*0.3:
+			zoomies()
 	)
 	target()
 
@@ -33,17 +37,23 @@ func is_target_okay(target_position:Vector2) -> bool:
 func targetting_speed() -> float:
 	return 0.6 if phase >= 1 else 0.3
 
-func zoomies(times:int, initial:bool) -> void:
+func zoomies() -> void:
 	cancel_timers(STATE_TARGET)
-	var direction:int = sign(velocity.y) * -1
-	if initial: create_oneshot_process_timer(STATE_SPECIAL, 0.3, func(): zoomies(times,false)).process_function = func(delta): velocity *= 0.1**delta
-	else:
-		create_oneshot_process_timer(STATE_SPECIAL, randf_range(0.1, 0.4), func():
-			if times == 0: target()
-			else: zoomies(times-1, false)
-		).process_function = func(delta):
-			velocity += direction*delta*10
+	var direction:int = 1 if randf() > 0.5 else -1
+	create_looping_timer(STATE_ZOOMIES, 0.05, func(): rotation = randf_range(-0.1, 0.1))
+	await create_oneshot_process_timer(STATE_SPECIAL, 0.5).with_function(func(delta): velocity *= 0.1**delta).timeout
+	for i in randf_range(4,7):
+		await create_oneshot_process_timer(STATE_SPECIAL, randf_range(0.1, 1.5)).with_function(func(delta): velocity.y += direction*40*delta).timeout
+		direction *= -1
+		velocity.y *= -0.9
+	cancel_timers(STATE_ZOOMIES)
+	target()
 
+func swipe_probability() -> float:
+	match phase:
+		0: return 0.3
+		1: return 0.2
+		2, _: return 0.1
 
 func swipe(times:int) -> void:
 	cancel_timers(STATE_TARGET)
