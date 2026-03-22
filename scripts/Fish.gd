@@ -36,10 +36,10 @@ func _process(delta: float) -> void:
 		time += delta
 		if touching_player():
 			time_hooked += delta
-			progress += delta / 40
+			progress += delta * progress_increment()
 		else:
 			time_unhooked += delta
-			progress -= delta / 40
+			progress -= delta * progress_increment()
 	else:
 		self_modulate.a = 0.5
 	progress = clamp(progress, self.PHASES[phase], 1)
@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 	level.hud.accuracy_label.text = "Accuracy: %.1f%%" % (accuracy * 100)
 
 func penalty(amount:float) -> void:
-	progress -= amount/40
+	progress -= amount * progress_increment()
 	time_unhooked += amount
 	time += amount
 
@@ -116,3 +116,4 @@ func cancel_timer(id:int, why:String) -> void:
 
 @abstract func start() -> void
 @abstract func phase_increased() -> void
+@abstract func progress_increment() -> float

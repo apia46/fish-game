@@ -18,8 +18,13 @@ func start() -> void:
 	)
 	target()
 
+func progress_increment() -> float: return 1.0/80
+
 func phase_increased() -> void:
-	pass
+	if phase == 1:
+		texture = preload("res://assets/level_2/catfish_1.png")
+	elif phase == 2:
+		texture = preload("res://assets/level_2/catfish_2.png")
 
 func target() -> void:
 	var target_timer:ProcessTimer = create_oneshot_process_timer(STATE_TARGET, randf_range(1.5, 2), target)

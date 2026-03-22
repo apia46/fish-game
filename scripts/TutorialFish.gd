@@ -13,6 +13,8 @@ func start() -> void:
 	)
 	target()
 
+func progress_increment() -> float: return 1.0/40
+
 func phase_increased() -> void:
 	if phase == 1:
 		create_looping_timer(STATE_NONE, 0.8, func() -> void:

@@ -14,6 +14,8 @@ func start() -> void:
 			dash()
 	)
 
+func progress_increment() -> float: return 1.0/60
+
 func dash_probability() -> float:
 	return 0.8 if phase >= 1 else 0.4
 

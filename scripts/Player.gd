@@ -52,4 +52,4 @@ func _input(event: InputEvent) -> void:
 					var tutorial:Tutorial = game.scene
 					if tutorial.dash_tutorialing: tutorial.dash_tutorial_finish()
 					elif !tutorial.dash_tutorialed: tutorial.dash_tutorial_skip()
-				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.progress += 0.005
+				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.progress += bar.fish.progress_increment() * 0.2
