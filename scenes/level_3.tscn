@@ -2,19 +2,84 @@
 
 [ext_resource type="Script" uid="uid://dctnff5be2nr" path="res://scripts/Level3.gd" id="1_1pn4d"]
 [ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="2_ah8om"]
+[ext_resource type="Texture2D" uid="uid://bxlscosabiepa" path="res://assets/level_3/star_0.png" id="2_vcx5n"]
+[ext_resource type="Texture2D" uid="uid://cjhc4ia0io81d" path="res://assets/level_3/star_1.png" id="3_56dhn"]
+[ext_resource type="PackedScene" uid="uid://diesq1u2tix7" path="res://scenes/plane_player.tscn" id="3_hhfj6"]
 [ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://scripts/Bar.gd" id="3_p6vls"]
-[ext_resource type="PackedScene" uid="uid://bfnvlsuf05tgf" path="res://scenes/player.tscn" id="4_hhfj6"]
+[ext_resource type="Texture2D" uid="uid://cg2o0icy0ek4o" path="res://assets/level_3/star_2.png" id="4_ax3dk"]
 [ext_resource type="PackedScene" uid="uid://4us1p4p1501g" path="res://scenes/sky_fish.tscn" id="5_ah8om"]
+[ext_resource type="Texture2D" uid="uid://cdtipynrqcytd" path="res://assets/level_3/star_3.png" id="5_q2dsb"]
 [ext_resource type="Script" uid="uid://jwfq5abuac51" path="res://scripts/Clouds.gd" id="6_p6vls"]
+[ext_resource type="Texture2D" uid="uid://bj7oemjqrr853" path="res://assets/level_3/wispy_cloud.png" id="10_56dhn"]
+[ext_resource type="Texture2D" uid="uid://bynebkp74ypih" path="res://assets/level_3/wispy_cloud_2.png" id="11_ax3dk"]
 
 [sub_resource type="Gradient" id="Gradient_ah8om"]
 offsets = PackedFloat32Array(0.038265307, 0.35714287, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.13600004, 0, 0.34, 1, 0.73986393, 0.89668137, 0.8987451, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.13600004, 0, 0.34, 1, 0.594, 0.8949001, 0.9, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_p6vls"]
 gradient = SubResource("Gradient_ah8om")
 height = 1000
 fill_to = Vector2(0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ax3dk"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(1400, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(0, 300, 0)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 86.33
+initial_velocity_max = 136.69
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p3r0x"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(1400, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(0, 100, 0)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 86.33
+initial_velocity_max = 136.69
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q2dsb"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(1400, 100, 0)
+emission_shape = 3
+emission_box_extents = Vector3(0, 500, 0)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 86.33
+initial_velocity_max = 136.69
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_p3r0x"]
+frames = 6
+frame_0/texture = ExtResource("2_vcx5n")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("3_56dhn")
+frame_1/duration = 0.15
+frame_2/texture = ExtResource("4_ax3dk")
+frame_2/duration = 0.15
+frame_3/texture = ExtResource("5_q2dsb")
+frame_3/duration = 0.3
+frame_4/texture = ExtResource("4_ax3dk")
+frame_4/duration = 0.15
+frame_5/texture = ExtResource("3_56dhn")
+frame_5/duration = 0.15
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5xqnf"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(1200, 0, 0)
+emission_shape = 3
+emission_box_extents = Vector3(0, 800, 0)
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 57.559998
+initial_velocity_max = 57.559998
+gravity = Vector3(0, 0, 0)
 
 [node name="level3" type="Control" unique_id=1789655764]
 layout_mode = 3
@@ -47,25 +112,57 @@ offset_right = 1152.0
 offset_bottom = 659.0
 texture = SubResource("GradientTexture2D_p6vls")
 
+[node name="wispy_clouds" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=887781588]
+amount = 60
+texture = ExtResource("10_56dhn")
+lifetime = 20.0
+preprocess = 20.0
+visibility_rect = Rect2(0, -500, 1152, 1000)
+process_material = SubResource("ParticleProcessMaterial_ax3dk")
+
+[node name="wispy_clouds3" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=1456508499]
+amount = 30
+texture = ExtResource("10_56dhn")
+lifetime = 20.0
+preprocess = 20.0
+visibility_rect = Rect2(0, -500, 1152, 1000)
+process_material = SubResource("ParticleProcessMaterial_p3r0x")
+
+[node name="wispy_clouds2" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=1263750922]
+amount = 30
+texture = ExtResource("11_ax3dk")
+lifetime = 20.0
+preprocess = 20.0
+visibility_rect = Rect2(0, -500, 1152, 1000)
+process_material = SubResource("ParticleProcessMaterial_q2dsb")
+
+[node name="stars" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=686010997]
+position = Vector2(0, -1100)
+amount = 30
+texture = SubResource("AnimatedTexture_p3r0x")
+lifetime = 20.0
+visibility_rect = Rect2(0, 0, 1152, 2000)
+process_material = SubResource("ParticleProcessMaterial_5xqnf")
+
 [node name="bar" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1880243854]
 unique_name_in_owner = true
-offset_left = 50.0
+offset_left = 80.0
 offset_top = -1107.0
-offset_right = 98.0
+offset_right = 128.0
 offset_bottom = 615.0
 script = ExtResource("3_p6vls")
 metadata/_custom_type_script = "uid://dmg8lpwf636l1"
 
-[node name="player" parent="SubViewportContainer/SubViewport/bar" unique_id=1704506454 instance=ExtResource("4_hhfj6")]
+[node name="player" parent="SubViewportContainer/SubViewport/bar" unique_id=1484250118 instance=ExtResource("3_hhfj6")]
 unique_name_in_owner = true
-position = Vector2(24, 1300)
+position = Vector2(24, 1400)
 
 [node name="fish" parent="SubViewportContainer/SubViewport/bar" unique_id=348050521 instance=ExtResource("5_ah8om")]
 position = Vector2(15, 1300)
 
 [node name="camera" type="Camera2D" parent="SubViewportContainer/SubViewport/bar" unique_id=1246677661]
 unique_name_in_owner = true
-position = Vector2(526, 1444)
+position = Vector2(496, 1432)
 limit_top = -1000
 limit_bottom = 648
 limit_smoothed = true

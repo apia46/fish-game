@@ -8,7 +8,3 @@ class_name Level
 @abstract func start() -> void
 
 @abstract func win() -> void
-
-func get_gravity() -> float: return 100
-
-func get_dash_loss() -> float: return 0.8

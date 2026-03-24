@@ -1,29 +1,16 @@
-extends Node2D
-class_name Player
+extends Player
+class_name PlanePlayer
 
-@onready var game:Game = $"/root/game"
-@onready var bar:Bar = get_parent()
-var collision:Area2D
+func half_height() -> float: return 64
 
-var velocity:Vector2 = Vector2.ZERO
-
-var active:bool = false
-
-var stretch_y:float = 1
-
-func _ready() -> void:
-	collision = %collision
-
-func half_height() -> float:
-	return 64 * stretch_y
+func _ready() -> void: pass
 
 func _process(delta: float) -> void:
 	if !active: return
-	velocity.y += delta * 100
+	velocity.y += delta * lerp(50, 100, position.y/bar.size.y) # gravity
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
 		
 	position += velocity * delta
-	stretch_y += (min(0.8+abs(velocity.y)*0.001, 1.2) - stretch_y) * 0.3
 
 	if position.y < half_height(): # bounce off top
 		position.y = half_height()
@@ -32,7 +19,6 @@ func _process(delta: float) -> void:
 		position.y = bar.size.y - half_height()
 		if velocity.y > 0: velocity.y *= -0.8
 	
-	%velocityLine.position.y = half_height() * sign(velocity.y)
 	%velocityArrow.position = velocity/5
 	%velocityArrow.polygon[2] = (abs(velocity)/10).max(Vector2.ONE*10) * sign(velocity)
 	%velocityArrow.visible = velocity.length_squared() > 5
@@ -41,18 +27,11 @@ func _process(delta: float) -> void:
 	%velocityArrow.color = speed_color
 	%velocityLine.default_color = speed_color
 
-	%collision.scale.y = stretch_y
-	%texture.size.y = 128*stretch_y
-	%texture.position.y = -64*stretch_y
+	%sprite.rotation = velocity.y * 0.002
 
 func _input(event: InputEvent) -> void:
 	if !active: return
 	if event is InputEventKey and event.pressed and !event.echo:
 		match event.keycode:
 			KEY_SPACE:
-				velocity.y *= -0.8
-				if bar.fish is TutorialFish:
-					var tutorial:Tutorial = game.level
-					if tutorial.dash_tutorialing: tutorial.dash_tutorial_finish()
-					elif !tutorial.dash_tutorialed: tutorial.dash_tutorial_skip()
-				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.progress += bar.fish.progress_increment() * 0.2
+				velocity.y *= -lerp(0.4, 0.8, (position.y+648)/bar.size.y)
