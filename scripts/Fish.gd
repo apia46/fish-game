@@ -25,7 +25,7 @@ var progress:float = 0
 
 var active:bool = false
 
-@onready var level:Level = game.scene
+@onready var level:Level = game.level
 
 func _process(delta: float) -> void:
 	if !active: return

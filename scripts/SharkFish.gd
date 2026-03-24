@@ -53,4 +53,5 @@ func dash() -> void:
 		velocity -= sign(velocity) * delta * 80
 
 func phase_increased() -> void:
-	pass
+	if phase == 1:
+		texture = preload("res://assets/level_1/shark_fish_2.png")

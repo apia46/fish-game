@@ -1,15 +1,15 @@
-[gd_scene format=3 uid="uid://c68tloyny64hg"]
+[gd_scene format=3 uid="uid://4us1p4p1501g"]
 
-[ext_resource type="Texture2D" uid="uid://dmddbhdir0xia" path="res://assets/level_2/catfish.png" id="1_fv1a6"]
-[ext_resource type="Script" uid="uid://ba7hay3qfebd0" path="res://scripts/CatFish.gd" id="2_5olnl"]
+[ext_resource type="Texture2D" uid="uid://cf7xgyyny7h55" path="res://assets/level_3/skyfish.png" id="1_fmuh3"]
+[ext_resource type="Script" uid="uid://ctrwg1m88wcye" path="res://scripts/SkyFish.gd" id="2_fmuh3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6c3tp"]
 size = Vector2(26, 21)
 
-[node name="cat_fish" type="Sprite2D" unique_id=348050521]
+[node name="sky_fish" type="Sprite2D" unique_id=348050521]
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("1_fv1a6")
-script = ExtResource("2_5olnl")
+texture = ExtResource("1_fmuh3")
+script = ExtResource("2_fmuh3")
 
 [node name="collision" type="Area2D" parent="." unique_id=1735826683]
 unique_name_in_owner = true

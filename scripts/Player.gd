@@ -16,7 +16,7 @@ func half_height() -> float:
 
 func _process(delta: float) -> void:
 	if !active: return
-	velocity.y += delta * 100 # gravity
+	velocity.y += delta * game.level.get_gravity() # gravity
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
 		
 	position += velocity * delta
@@ -47,9 +47,9 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and !event.echo:
 		match event.keycode:
 			KEY_SPACE:
-				velocity.y *= -0.8 # dash attack
+				velocity.y *= -game.level.get_dash_loss() # dash attack
 				if bar.fish is TutorialFish:
-					var tutorial:Tutorial = game.scene
+					var tutorial:Tutorial = game.level
 					if tutorial.dash_tutorialing: tutorial.dash_tutorial_finish()
 					elif !tutorial.dash_tutorialed: tutorial.dash_tutorial_skip()
 				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.progress += bar.fish.progress_increment() * 0.2

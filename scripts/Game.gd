@@ -2,20 +2,20 @@ extends Control
 class_name Game
 
 @onready var win_text:Label = %winText
-@onready var scene:Control
+@onready var level:Control
 
 func _ready() -> void:
-	scene = preload("res://scenes/tutorial.tscn").instantiate()
-	add_child(scene)
+	level = preload("res://scenes/tutorial.tscn").instantiate()
+	add_child(level)
 
 func _start() -> void:
-	#scene.start()
-	start_level(preload("res://scenes/level_2.tscn"))
+	#level.start()
+	start_level(preload("res://scenes/level_3.tscn"))
 	%startButton.queue_free()
 
-func start_level(level:PackedScene) -> void:
-	scene.queue_free()
-	scene = level.instantiate()
-	add_child(scene)
+func start_level(scene:PackedScene) -> void:
+	level.queue_free()
+	level = scene.instantiate()
+	add_child(level)
 	await get_tree().create_timer(0.5).timeout
-	scene.start()
+	level.start()

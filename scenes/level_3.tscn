@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://y7ob2hku3udy"]
+
+[ext_resource type="Script" uid="uid://dctnff5be2nr" path="res://scripts/Level3.gd" id="1_1pn4d"]
+[ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="2_ah8om"]
+[ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://scripts/Bar.gd" id="3_p6vls"]
+[ext_resource type="PackedScene" uid="uid://bfnvlsuf05tgf" path="res://scenes/player.tscn" id="4_hhfj6"]
+[ext_resource type="PackedScene" uid="uid://4us1p4p1501g" path="res://scenes/sky_fish.tscn" id="5_ah8om"]
+[ext_resource type="Script" uid="uid://jwfq5abuac51" path="res://scripts/Clouds.gd" id="6_p6vls"]
+
+[sub_resource type="Gradient" id="Gradient_ah8om"]
+offsets = PackedFloat32Array(0.038265307, 0.35714287, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.13600004, 0, 0.34, 1, 0.73986393, 0.89668137, 0.8987451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p6vls"]
+gradient = SubResource("Gradient_ah8om")
+height = 1000
+fill_to = Vector2(0, 1)
+
+[node name="level3" type="Control" unique_id=1789655764]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1pn4d")
+metadata/_custom_type_script = "uid://dctnff5be2nr"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1825414412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=462157060]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="bg" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1206279589]
+offset_top = -1537.0
+offset_right = 1152.0
+offset_bottom = 659.0
+texture = SubResource("GradientTexture2D_p6vls")
+
+[node name="bar" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1880243854]
+unique_name_in_owner = true
+offset_left = 50.0
+offset_top = -1107.0
+offset_right = 98.0
+offset_bottom = 615.0
+script = ExtResource("3_p6vls")
+metadata/_custom_type_script = "uid://dmg8lpwf636l1"
+
+[node name="player" parent="SubViewportContainer/SubViewport/bar" unique_id=1704506454 instance=ExtResource("4_hhfj6")]
+unique_name_in_owner = true
+position = Vector2(24, 1300)
+
+[node name="fish" parent="SubViewportContainer/SubViewport/bar" unique_id=348050521 instance=ExtResource("5_ah8om")]
+position = Vector2(15, 1300)
+
+[node name="camera" type="Camera2D" parent="SubViewportContainer/SubViewport/bar" unique_id=1246677661]
+unique_name_in_owner = true
+position = Vector2(526, 1444)
+limit_top = -1000
+limit_bottom = 648
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+
+[node name="Clouds" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=23669468]
+position = Vector2(0, 517)
+script = ExtResource("6_p6vls")
+metadata/_custom_type_script = "uid://jwfq5abuac51"
+
+[node name="hud" parent="." unique_id=98241740 instance=ExtResource("2_ah8om")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="progressBar" parent="hud" index="0" unique_id=1318831120]
+offset_left = 274.0
+offset_top = 185.0
+offset_right = 814.0
+offset_bottom = 212.0
+
+[node name="accuracyLabel" parent="hud" index="1" unique_id=1476308416]
+offset_left = 363.0
+offset_top = 115.0
+offset_right = 771.0
+offset_bottom = 138.0
+
+[editable path="hud"]
