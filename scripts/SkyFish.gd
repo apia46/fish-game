@@ -5,7 +5,7 @@ const STATE_TARGET:int = 2
 
 const PHASES:Array[float] = [0, 0.25, 0.5, 0.75, 1]
 
-const PLAYER_INFLUENCE:float = 150
+const PLAYER_INFLUENCE:float = 160
 
 func start() -> void:
 	position.x = bar.size.x/2
@@ -31,7 +31,6 @@ func target(set_target:float=NAN) -> void:
 		while !is_target_okay(target_position):
 			target_position.y = new_target_height()
 	else: target_position.y = set_target
-	print(target_position.y)
 	target_timer.process_function = func(delta:float) -> void:
 		velocity += ((target_position-position) - velocity) * delta * targetting_speed()
 		velocity.x = 0

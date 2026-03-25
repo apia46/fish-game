@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dctnff5be2nr" path="res://scripts/Level3.gd" id="1_1pn4d"]
 [ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="2_ah8om"]
-[ext_resource type="Texture2D" uid="uid://bxlscosabiepa" path="res://assets/level_3/star_0.png" id="2_vcx5n"]
-[ext_resource type="Texture2D" uid="uid://cjhc4ia0io81d" path="res://assets/level_3/star_1.png" id="3_56dhn"]
 [ext_resource type="PackedScene" uid="uid://diesq1u2tix7" path="res://scenes/plane_player.tscn" id="3_hhfj6"]
 [ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://scripts/Bar.gd" id="3_p6vls"]
-[ext_resource type="Texture2D" uid="uid://cg2o0icy0ek4o" path="res://assets/level_3/star_2.png" id="4_ax3dk"]
+[ext_resource type="Texture2D" uid="uid://inkssu83ece5" path="res://assets/level_3/star.png" id="4_ha73p"]
 [ext_resource type="PackedScene" uid="uid://4us1p4p1501g" path="res://scenes/sky_fish.tscn" id="5_ah8om"]
-[ext_resource type="Texture2D" uid="uid://cdtipynrqcytd" path="res://assets/level_3/star_3.png" id="5_q2dsb"]
 [ext_resource type="Script" uid="uid://jwfq5abuac51" path="res://scripts/Clouds.gd" id="6_p6vls"]
 [ext_resource type="Texture2D" uid="uid://bj7oemjqrr853" path="res://assets/level_3/wispy_cloud.png" id="10_56dhn"]
 [ext_resource type="Texture2D" uid="uid://bynebkp74ypih" path="res://assets/level_3/wispy_cloud_2.png" id="11_ax3dk"]
@@ -55,20 +52,11 @@ initial_velocity_min = 86.33
 initial_velocity_max = 136.69
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_p3r0x"]
-frames = 6
-frame_0/texture = ExtResource("2_vcx5n")
-frame_0/duration = 0.3
-frame_1/texture = ExtResource("3_56dhn")
-frame_1/duration = 0.15
-frame_2/texture = ExtResource("4_ax3dk")
-frame_2/duration = 0.15
-frame_3/texture = ExtResource("5_q2dsb")
-frame_3/duration = 0.3
-frame_4/texture = ExtResource("4_ax3dk")
-frame_4/duration = 0.15
-frame_5/texture = ExtResource("3_56dhn")
-frame_5/duration = 0.15
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vcx5n"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = true
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5xqnf"]
 particle_flag_disable_z = true
@@ -80,6 +68,9 @@ spread = 0.0
 initial_velocity_min = 57.559998
 initial_velocity_max = 57.559998
 gravity = Vector3(0, 0, 0)
+anim_speed_min = 13.15
+anim_speed_max = 16.0
+anim_offset_max = 1.0
 
 [node name="level3" type="Control" unique_id=1789655764]
 layout_mode = 3
@@ -137,10 +128,11 @@ visibility_rect = Rect2(0, -500, 1152, 1000)
 process_material = SubResource("ParticleProcessMaterial_q2dsb")
 
 [node name="stars" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=686010997]
+material = SubResource("CanvasItemMaterial_vcx5n")
 position = Vector2(0, -1100)
 amount = 30
-texture = SubResource("AnimatedTexture_p3r0x")
-lifetime = 20.0
+texture = ExtResource("4_ha73p")
+lifetime = 24.0
 visibility_rect = Rect2(0, 0, 1152, 2000)
 process_material = SubResource("ParticleProcessMaterial_5xqnf")
 

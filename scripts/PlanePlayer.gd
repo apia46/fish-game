@@ -7,7 +7,7 @@ func _ready() -> void: pass
 
 func _process(delta: float) -> void:
 	if !active: return
-	velocity.y += delta * lerp(50, 100, position.y/bar.size.y) # gravity
+	velocity.y += delta * lerp(70, 100, position.y/bar.size.y) # gravity
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
 		
 	position += velocity * delta
@@ -34,4 +34,4 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and !event.echo:
 		match event.keycode:
 			KEY_SPACE:
-				velocity.y *= -lerp(0.4, 0.8, (position.y+648)/bar.size.y)
+				velocity.y *= -lerp(0.56, 0.8, (position.y+648)/bar.size.y)

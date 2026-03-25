@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://brsgkc8h0s34t"]
+
+[ext_resource type="Texture2D" uid="uid://dljo8yjh2byuv" path="res://assets/level_4/starfish.png" id="1_y0vnn"]
+[ext_resource type="Script" uid="uid://dijuff6mq2f8o" path="res://scripts/StarFish.gd" id="2_ca0lg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvj3m"]
+size = Vector2(26, 26)
+
+[node name="fish" type="Sprite2D" unique_id=1074441806]
+texture = ExtResource("1_y0vnn")
+script = ExtResource("2_ca0lg")
+
+[node name="collision" type="Area2D" parent="." unique_id=1202066104]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=1535738077]
+shape = SubResource("RectangleShape2D_wvj3m")

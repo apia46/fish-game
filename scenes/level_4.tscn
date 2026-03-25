@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://bb72ya1vrqm2i"]
+
+[ext_resource type="Script" uid="uid://doc2gwm05h712" path="res://scripts/Level4.gd" id="1_wom6i"]
+[ext_resource type="Script" uid="uid://bkst83lqu8ong" path="res://scripts/stars.gd" id="2_x7blo"]
+[ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="2_ycko3"]
+[ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://scripts/Bar.gd" id="3_x7blo"]
+[ext_resource type="PackedScene" uid="uid://kmro4rd27hn8" path="res://scenes/space_player.tscn" id="4_qsmat"]
+[ext_resource type="PackedScene" uid="uid://brsgkc8h0s34t" path="res://scenes/star_fish.tscn" id="5_yk4f3"]
+
+[node name="level_4" type="Control" unique_id=356871724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wom6i")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1517257658]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1113667606]
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+
+[node name="world" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1211775360]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -500.0
+offset_top = -500.0
+offset_right = 1652.0
+offset_bottom = 1148.0
+
+[node name="bg" type="ColorRect" parent="SubViewportContainer/SubViewport/world" unique_id=1187434468]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="stars" type="Node2D" parent="SubViewportContainer/SubViewport/world" unique_id=1458567095]
+unique_name_in_owner = true
+position = Vector2(1076, 824)
+script = ExtResource("2_x7blo")
+
+[node name="stars_bg" type="Node2D" parent="SubViewportContainer/SubViewport/world" unique_id=478108530]
+unique_name_in_owner = true
+position = Vector2(1076, 824)
+script = ExtResource("2_x7blo")
+
+[node name="bar" type="TextureRect" parent="SubViewportContainer/SubViewport/world" unique_id=462394339]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_x7blo")
+metadata/_custom_type_script = "uid://dmg8lpwf636l1"
+
+[node name="player" parent="SubViewportContainer/SubViewport/world/bar" unique_id=1704506454 instance=ExtResource("4_qsmat")]
+unique_name_in_owner = true
+position = Vector2(1074, 848)
+
+[node name="fish" parent="SubViewportContainer/SubViewport/world/bar" unique_id=1074441806 instance=ExtResource("5_yk4f3")]
+position = Vector2(1004, 788)
+scale = Vector2(2, 2)
+
+[node name="camera" type="Camera2D" parent="SubViewportContainer/SubViewport/world" unique_id=1907301231]
+unique_name_in_owner = true
+position = Vector2(576, 324)
+limit_left = -500
+limit_top = -500
+limit_right = 1652
+limit_bottom = 1148
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+
+[node name="hud" parent="." unique_id=98241740 instance=ExtResource("2_ycko3")]
+unique_name_in_owner = true
+layout_mode = 1
