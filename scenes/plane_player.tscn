@@ -13,6 +13,9 @@ grow_begin = 2.0
 grow_end = 2.0
 thickness = 4
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d20lh"]
+size = Vector2(96, 36)
+
 [node name="player" type="Node2D" unique_id=1484250118]
 script = ExtResource("1_d20lh")
 metadata/_custom_type_script = "uid://g2vsfkg11wn3"
@@ -62,3 +65,8 @@ polygon = PackedVector2Array(-11, 0, 11, 0, 0, 8)
 [node name="sprite" type="Sprite2D" parent="." unique_id=31807481]
 unique_name_in_owner = true
 texture = ExtResource("2_xyytv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1195939118]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1488728609]
+shape = SubResource("RectangleShape2D_d20lh")

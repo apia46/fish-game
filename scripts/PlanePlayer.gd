@@ -1,6 +1,8 @@
 extends Player
 class_name PlanePlayer
 
+var rotation_offset:float = 0
+
 func half_height() -> float: return 64
 
 func _ready() -> void: pass
@@ -11,6 +13,9 @@ func _process(delta: float) -> void:
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
 		
 	position += velocity * delta
+
+	if rotation_offset > 0: rotation_offset = max(0, rotation_offset - delta)
+	elif rotation_offset < 0: rotation_offset = min(0, rotation_offset + delta)
 
 	if position.y < half_height(): # bounce off top
 		position.y = half_height()
@@ -27,7 +32,7 @@ func _process(delta: float) -> void:
 	%velocityArrow.color = speed_color
 	%velocityLine.default_color = speed_color
 
-	%sprite.rotation = velocity.y * 0.002
+	%sprite.rotation = velocity.y * 0.002 + rotation_offset
 
 func _input(event: InputEvent) -> void:
 	if !active: return

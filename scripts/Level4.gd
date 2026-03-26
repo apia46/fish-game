@@ -9,6 +9,5 @@ func win() -> void:
 
 func _process(_delta) -> void:
 	%camera.position = %player.position
-	print(%camera.get_screen_center_position())
 	%stars.position = %camera.get_screen_center_position() * 0.2
 	%stars_bg.position = %camera.get_screen_center_position() * 0.1

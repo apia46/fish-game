@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="2_pbc48"]
 [ext_resource type="PackedScene" uid="uid://c68tloyny64hg" path="res://scenes/cat_fish.tscn" id="3_eqxsl"]
 [ext_resource type="Texture2D" uid="uid://b07d2m167xgti" path="res://assets/level_2/swipe.png" id="4_b4j7a"]
+[ext_resource type="Texture2D" uid="uid://bxk5e0140hdtq" path="res://assets/level_2/progress_fill.png" id="6_wo48x"]
 
 [node name="level_2" type="Control" unique_id=634665889]
 layout_mode = 3
@@ -34,3 +35,4 @@ offset = Vector2(0, -40)
 [node name="hud" parent="." unique_id=98241740 instance=ExtResource("2_pbc48")]
 unique_name_in_owner = true
 layout_mode = 1
+progress_fill = ExtResource("6_wo48x")

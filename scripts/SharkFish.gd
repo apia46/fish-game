@@ -12,9 +12,13 @@ func start() -> void:
 	create_looping_timer(STATE_NONE, 0.4, func() -> void:
 		if randf() < dash_probability() and !has_state(STATE_DASH) and position.y < bar.size.y*0.75 and position.y > bar.size.y*0.25:
 			dash()
+			if phase > 0:
+				for i in randi_range(1,3):
+					await get_tree().create_timer(0.4).timeout
+					dash()
 	)
 
-func progress_increment() -> float: return 1.0/60
+func progress_increment() -> float: return 1.0/50
 
 func dash_probability() -> float:
 	return 0.8 if phase >= 1 else 0.4

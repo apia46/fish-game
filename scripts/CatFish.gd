@@ -47,7 +47,7 @@ func zoomies() -> void:
 	var direction:int = 1 if randf() > 0.5 else -1
 	create_looping_timer(STATE_ZOOMIES, 0.05, func(): rotation = randf_range(-0.1, 0.1))
 	await create_oneshot_process_timer(STATE_SPECIAL, 0.5).with_function(func(delta): velocity *= 0.1**delta).timeout
-	for i in randf_range(4,7):
+	for i in randf_range(6,10):
 		await create_oneshot_process_timer(STATE_SPECIAL, randf_range(0.1, 1.5)).with_function(func(delta): velocity.y += direction*40*delta).timeout
 		direction *= -1
 		velocity.y *= -0.9

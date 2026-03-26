@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djiryeqeslta2" path="res://scenes/shark_fish.tscn" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://b6quwdbby6tdn" path="res://scenes/hud.tscn" id="4_5xbjy"]
 [ext_resource type="Texture2D" uid="uid://lpkwg2n8anbv" path="res://assets/level_1/wheel.png" id="7_15mv3"]
+[ext_resource type="Texture2D" uid="uid://ba3s0hdc0ln3q" path="res://assets/level_1/progress_fill.png" id="7_e3sih"]
 
 [sub_resource type="Gradient" id="Gradient_pa8r4"]
 colors = PackedColorArray(0.32172796, 0.32172796, 0.32172796, 1, 0.61, 0.48189998, 0.24399999, 1)
@@ -112,6 +113,7 @@ offset_left = -576.0
 offset_top = -648.0
 offset_right = -576.0
 offset_bottom = -648.0
+progress_fill = ExtResource("7_e3sih")
 
 [node name="wheel" type="Sprite2D" parent="pivot" unique_id=510095220]
 unique_name_in_owner = true

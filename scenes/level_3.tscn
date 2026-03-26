@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://4us1p4p1501g" path="res://scenes/sky_fish.tscn" id="5_ah8om"]
 [ext_resource type="Script" uid="uid://jwfq5abuac51" path="res://scripts/Clouds.gd" id="6_p6vls"]
 [ext_resource type="Texture2D" uid="uid://bj7oemjqrr853" path="res://assets/level_3/wispy_cloud.png" id="10_56dhn"]
+[ext_resource type="Texture2D" uid="uid://b0xggsci0xniv" path="res://assets/level_3/progress_fill.png" id="10_vcx5n"]
 [ext_resource type="Texture2D" uid="uid://bynebkp74ypih" path="res://assets/level_3/wispy_cloud_2.png" id="11_ax3dk"]
 
 [sub_resource type="Gradient" id="Gradient_ah8om"]
@@ -91,19 +92,19 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=462157060]
+[node name="world" type="SubViewport" parent="SubViewportContainer" unique_id=462157060]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="bg" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1206279589]
+[node name="bg" type="TextureRect" parent="SubViewportContainer/world" unique_id=1206279589]
 offset_top = -1537.0
 offset_right = 1152.0
 offset_bottom = 659.0
 texture = SubResource("GradientTexture2D_p6vls")
 
-[node name="wispy_clouds" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=887781588]
+[node name="wispy_clouds" type="GPUParticles2D" parent="SubViewportContainer/world" unique_id=887781588]
 amount = 60
 texture = ExtResource("10_56dhn")
 lifetime = 20.0
@@ -111,7 +112,7 @@ preprocess = 20.0
 visibility_rect = Rect2(0, -500, 1152, 1000)
 process_material = SubResource("ParticleProcessMaterial_ax3dk")
 
-[node name="wispy_clouds3" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=1456508499]
+[node name="wispy_clouds3" type="GPUParticles2D" parent="SubViewportContainer/world" unique_id=1456508499]
 amount = 30
 texture = ExtResource("10_56dhn")
 lifetime = 20.0
@@ -119,7 +120,7 @@ preprocess = 20.0
 visibility_rect = Rect2(0, -500, 1152, 1000)
 process_material = SubResource("ParticleProcessMaterial_p3r0x")
 
-[node name="wispy_clouds2" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=1263750922]
+[node name="wispy_clouds2" type="GPUParticles2D" parent="SubViewportContainer/world" unique_id=1263750922]
 amount = 30
 texture = ExtResource("11_ax3dk")
 lifetime = 20.0
@@ -127,7 +128,7 @@ preprocess = 20.0
 visibility_rect = Rect2(0, -500, 1152, 1000)
 process_material = SubResource("ParticleProcessMaterial_q2dsb")
 
-[node name="stars" type="GPUParticles2D" parent="SubViewportContainer/SubViewport" unique_id=686010997]
+[node name="stars" type="GPUParticles2D" parent="SubViewportContainer/world" unique_id=686010997]
 material = SubResource("CanvasItemMaterial_vcx5n")
 position = Vector2(0, -1100)
 amount = 30
@@ -136,32 +137,35 @@ lifetime = 24.0
 visibility_rect = Rect2(0, 0, 1152, 2000)
 process_material = SubResource("ParticleProcessMaterial_5xqnf")
 
-[node name="bar" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1880243854]
+[node name="bar" type="TextureRect" parent="SubViewportContainer/world" unique_id=1880243854]
 unique_name_in_owner = true
-offset_left = 80.0
+offset_left = 250.0
 offset_top = -1107.0
-offset_right = 128.0
+offset_right = 298.0
 offset_bottom = 615.0
 script = ExtResource("3_p6vls")
 metadata/_custom_type_script = "uid://dmg8lpwf636l1"
 
-[node name="player" parent="SubViewportContainer/SubViewport/bar" unique_id=1484250118 instance=ExtResource("3_hhfj6")]
+[node name="player" parent="SubViewportContainer/world/bar" unique_id=1484250118 instance=ExtResource("3_hhfj6")]
 unique_name_in_owner = true
 position = Vector2(24, 1400)
 
-[node name="fish" parent="SubViewportContainer/SubViewport/bar" unique_id=348050521 instance=ExtResource("5_ah8om")]
+[node name="fish" parent="SubViewportContainer/world/bar" unique_id=348050521 instance=ExtResource("5_ah8om")]
 position = Vector2(15, 1300)
 
-[node name="camera" type="Camera2D" parent="SubViewportContainer/SubViewport/bar" unique_id=1246677661]
+[node name="camera" type="Camera2D" parent="SubViewportContainer/world/bar" unique_id=1246677661]
 unique_name_in_owner = true
-position = Vector2(496, 1432)
+position = Vector2(326, 1432)
 limit_top = -1000
 limit_bottom = 648
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_vertical_enabled = true
 
-[node name="Clouds" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=23669468]
+[node name="birds" type="Node2D" parent="SubViewportContainer/world/bar" unique_id=1301498206]
+unique_name_in_owner = true
+
+[node name="Clouds" type="Node2D" parent="SubViewportContainer/world" unique_id=23669468]
 position = Vector2(0, 517)
 script = ExtResource("6_p6vls")
 metadata/_custom_type_script = "uid://jwfq5abuac51"
@@ -169,17 +173,18 @@ metadata/_custom_type_script = "uid://jwfq5abuac51"
 [node name="hud" parent="." unique_id=98241740 instance=ExtResource("2_ah8om")]
 unique_name_in_owner = true
 layout_mode = 1
+progress_fill = ExtResource("10_vcx5n")
 
-[node name="progressBar" parent="hud" index="0" unique_id=1318831120]
-offset_left = 274.0
-offset_top = 185.0
-offset_right = 814.0
-offset_bottom = 212.0
+[node name="progressBar" parent="hud" index="0" unique_id=1266592732]
+offset_left = 25.0
+offset_top = 602.0
+offset_right = 565.0
+offset_bottom = 629.0
 
 [node name="accuracyLabel" parent="hud" index="1" unique_id=1476308416]
-offset_left = 363.0
-offset_top = 115.0
-offset_right = 771.0
-offset_bottom = 138.0
+offset_left = 49.0
+offset_top = 557.0
+offset_right = 457.0
+offset_bottom = 588.0
 
 [editable path="hud"]

@@ -49,7 +49,8 @@ func _process(delta: float) -> void:
 		phase += 1
 		phase_increased()
 	var accuracy:float = 1 - time_unhooked/time
-	level.hud.accuracy_label.text = "Accuracy: %.1f%%" % (accuracy * 100)
+	if time == 0: level.hud.accuracy_label.text = "Accuracy: 100.0%"
+	else: level.hud.accuracy_label.text = "Accuracy: %.1f%%" % (accuracy * 100)
 
 func penalty(amount:float) -> void:
 	progress -= amount * progress_increment()

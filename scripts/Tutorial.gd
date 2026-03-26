@@ -25,6 +25,7 @@ func start() -> void:
 	)
 	var tween:Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(%bar, ^"position:x", %bar.position.x - 200, 2)
+	tween.parallel().tween_property(%hud, ^"position:y", 0, 2)
 
 func _process(delta:float) -> void:
 	time += delta
@@ -48,18 +49,21 @@ func dash_tutorial() -> void:
 	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
 	tween.tween_property(Engine, ^"time_scale", 0, 0.3)
 	tween.tween_interval(0.5)
-	tween.tween_callback(func(): tutorial_text.visible = true)
+	await tween.finished
+	%bar.player.active = false
+	await GamePopup.create(self, "The fish is about to dash in the opposite direction.", "Okay").closed
+	await GamePopup.create(self, "Press space to reverse your momentum.", "Okay").closed
+	%bar.player.active = true
 
 func dash_tutorial_finish() -> void:
 	dash_tutorialing = false
 	var tween:Tween = get_tree().create_tween().set_ignore_time_scale()
 	tween.tween_property(Engine, ^"time_scale", 1, 0.3)
-	tween.tween_callback(func(): tutorial_text.text = "Press space to dash, which gives a small amount of progress.")
+	tween.tween_callback(func(): tutorial_text.visible = true)
 
 func dash_tutorial_skip() -> void:
 	dash_tutorialed = true
 	tutorial_text.visible = true
-	tutorial_text.text = "Press space to dash, which gives a small amount of progress."
 
 func win() -> void:
 	game.win_text.visible = true

@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://b6quwdbby6tdn"]
 
 [ext_resource type="Script" uid="uid://do6nr0frw4scd" path="res://scripts/Hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://1umg36lp07nj" path="res://assets/progress.png" id="2_5ysmq"]
+[ext_resource type="FontFile" uid="uid://dkrhhly1w4ac0" path="res://resources/dynapuff.ttf" id="2_oo0fn"]
+[ext_resource type="Texture2D" uid="uid://b5eh1n8bjpnel" path="res://assets/base_progress_fill.png" id="3_6fi6k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahhtf"]
+font = ExtResource("2_oo0fn")
+font_size = 25
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="hud" type="Control" unique_id=98241740]
 layout_mode = 3
@@ -12,20 +21,26 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ahhtf")
 
-[node name="progressBar" type="ProgressBar" parent="." unique_id=1318831120]
+[node name="progressBar" type="TextureProgressBar" parent="." unique_id=1266592732]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 82.0
-offset_top = 190.0
-offset_right = 622.0
-offset_bottom = 217.0
+offset_left = 673.0
+offset_top = 585.0
+offset_right = 873.0
+offset_bottom = 603.0
+scale = Vector2(2, 2)
 max_value = 1.0
 step = 0.0
+texture_under = ExtResource("2_5ysmq")
+texture_progress = ExtResource("3_6fi6k")
+texture_progress_offset = Vector2(4, 3)
 
 [node name="accuracyLabel" type="Label" parent="." unique_id=1476308416]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 140.0
-offset_top = 84.0
-offset_right = 548.0
-offset_bottom = 107.0
+offset_left = 684.0
+offset_top = 550.0
+offset_right = 1092.0
+offset_bottom = 595.0
+text = "Accuracy: 100.0%"
+label_settings = SubResource("LabelSettings_ahhtf")

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b2dpnni8aexyi"
-path="res://.godot/imported/Domine-VariableFont_wght.ttf-9fa2b4fb5a46a4fa96d586e505ee792a.fontdata"
+uid="uid://dkrhhly1w4ac0"
+path="res://.godot/imported/dynapuff.ttf-dd60335415476ab05f35e741ddae60d8.fontdata"
 
 [deps]
 
-source_file="res://resources/Domine-VariableFont_wght.ttf"
-dest_files=["res://.godot/imported/Domine-VariableFont_wght.ttf-9fa2b4fb5a46a4fa96d586e505ee792a.fontdata"]
+source_file="res://resources/dynapuff.ttf"
+dest_files=["res://.godot/imported/dynapuff.ttf-dd60335415476ab05f35e741ddae60d8.fontdata"]
 
 [params]
 

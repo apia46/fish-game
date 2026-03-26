@@ -78,6 +78,7 @@ func orbit(radius:float, rotation_phase:float, speed:float, new_target:bool=fals
 		)
 	)
 	if new_target: timer.process_function = func(delta): position = orbit_position - (orbit_position - position) * 0.1**delta
+	else: timer.process_function = func(_delta): pass
 
 func is_orbit_okay(target_position:Vector2) -> bool:
 	var distance_squared:float = target_position.distance_squared_to(position)

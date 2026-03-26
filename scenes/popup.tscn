@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://c0rqqo6ef3fnm"]
+
+[ext_resource type="Texture2D" uid="uid://bef1ix8dwjwir" path="res://assets/info.png" id="1_4ebxx"]
+[ext_resource type="Script" uid="uid://dbvv60obqrxav" path="res://scripts/Popup.gd" id="1_cpc1a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bndsu"]
+bg_color = Color(0.40039998, 0.48212665, 0.52, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="popup" type="Panel" unique_id=1507365213]
+custom_minimum_size = Vector2(250, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bndsu")
+script = ExtResource("1_cpc1a")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=884818657]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 14.0
+offset_right = 36.0
+offset_bottom = 38.0
+texture = ExtResource("1_4ebxx")
+
+[node name="Label" type="Label" parent="." unique_id=956832706]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -54.5
+offset_right = 110.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "When the fish is disengaged, you don't have to stay on it"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=379893956]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -46.0
+offset_right = 24.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Okay"
+
+[connection signal="pressed" from="Button" to="." method="_close"]

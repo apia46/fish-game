@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://hhax4k20bgds"
-path="res://.godot/imported/CaveatBrush-Regular.ttf-d33116e8af4dac2251086d61a36d2b5f.fontdata"
+uid="uid://b2dpnni8aexyi"
+path="res://.godot/imported/domine.ttf-04738cd9398c5b92f979e71c8e35cb97.fontdata"
 
 [deps]
 
-source_file="res://resources/CaveatBrush-Regular.ttf"
-dest_files=["res://.godot/imported/CaveatBrush-Regular.ttf-d33116e8af4dac2251086d61a36d2b5f.fontdata"]
+source_file="res://resources/domine.ttf"
+dest_files=["res://.godot/imported/domine.ttf-04738cd9398c5b92f979e71c8e35cb97.fontdata"]
 
 [params]
 

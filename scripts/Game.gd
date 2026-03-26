@@ -9,13 +9,12 @@ func _ready() -> void:
 	add_child(level)
 
 func _start() -> void:
-	#level.start()
-	start_level(preload("res://scenes/level_4.tscn"))
+	level.start()
+	#start_level(preload("res://scenes/level_2.tscn"))
 	%startButton.queue_free()
 
 func start_level(scene:PackedScene) -> void:
 	level.queue_free()
 	level = scene.instantiate()
 	add_child(level)
-	await get_tree().create_timer(0.5).timeout
 	level.start()

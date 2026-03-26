@@ -8,10 +8,18 @@ var interior_tilt_velocity:float = 0
 
 @onready var pivot:Control = %pivot
 
+var active:bool = false
+
 func start() -> void:
+	await GamePopup.create(self, "Warning: Being too far to the side tilts the boat.", "Kay").closed
+	await GamePopup.create(self, "Avoid tilting the boat too far.", "Mhm").closed
+	await GamePopup.create(self, "Note: this fish disengages every time it dashes.", "And?").closed
+	await GamePopup.create(self, "When the fish is disengaged, you don't have to stay on it.", "Got it").closed
+	active = true
 	%bar.start()
 
 func _process(delta: float) -> void:
+	if !active: return
 	var add_velocity:float = (%bar.size.y*0.5 - %bar.player.position.y) * 0.025
 	if abs(add_velocity) < 1: add_velocity = 0
 	else: add_velocity -= 1 * sign(add_velocity)
