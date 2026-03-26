@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bedo64gxclcca"]
+
+[ext_resource type="Texture2D" uid="uid://dxtdflh4upj3d" path="res://assets/level_4/asteroid3.png" id="1_akfqu"]
+[ext_resource type="Script" uid="uid://brjvpucnbflbi" path="res://scripts/Asteroid.gd" id="2_6mo6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mo6b"]
+radius = 20.0
+
+[node name="asteroid" type="Sprite2D" unique_id=85793524]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_akfqu")
+script = ExtResource("2_6mo6b")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=592541983]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=439172361]
+shape = SubResource("CircleShape2D_6mo6b")

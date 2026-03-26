@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dljo8yjh2byuv" path="res://assets/level_4/starfish.png" id="1_y0vnn"]
 [ext_resource type="Script" uid="uid://dijuff6mq2f8o" path="res://scripts/StarFish.gd" id="2_ca0lg"]
+[ext_resource type="Script" uid="uid://duk16vpqdler5" path="res://scripts/Circle.gd" id="3_ca0lg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvj3m"]
 size = Vector2(26, 26)
@@ -15,3 +16,8 @@ unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision" unique_id=1535738077]
 shape = SubResource("RectangleShape2D_wvj3m")
+
+[node name="circle" type="Node2D" parent="." unique_id=2073037936]
+unique_name_in_owner = true
+script = ExtResource("3_ca0lg")
+color = Color(1, 1, 1, 0)
