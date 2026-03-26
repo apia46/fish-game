@@ -9,8 +9,8 @@ func _ready() -> void:
 	add_child(level)
 
 func _start() -> void:
-	level.start()
-	#start_level(preload("res://scenes/level_2.tscn"))
+	#level.start()
+	start_level(preload("res://scenes/level_4.tscn"))
 	%startButton.queue_free()
 
 func start_level(scene:PackedScene) -> void:

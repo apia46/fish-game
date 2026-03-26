@@ -20,4 +20,3 @@ shape = SubResource("RectangleShape2D_wvj3m")
 [node name="circle" type="Node2D" parent="." unique_id=2073037936]
 unique_name_in_owner = true
 script = ExtResource("3_ca0lg")
-color = Color(1, 1, 1, 0)

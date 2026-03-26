@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://kmro4rd27hn8"]
 
 [ext_resource type="Script" uid="uid://cnerq1caqry5q" path="res://scripts/SpacePlayer.gd" id="1_opy1n"]
-[ext_resource type="Texture2D" uid="uid://bkv8ndl0go45j" path="res://assets/hook_side.png" id="2_umfja"]
-[ext_resource type="Texture2D" uid="uid://tihwj1m1l3y4" path="res://assets/hook_top.png" id="3_hwf6r"]
-[ext_resource type="Texture2D" uid="uid://dpkmjriwoscvw" path="res://assets/hook_bottom.png" id="4_osv2l"]
+[ext_resource type="Texture2D" uid="uid://dp4hd65fi53w4" path="res://assets/level_4/plane.png" id="2_q1du6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_opy1n"]
-radius = 100.0
+radius = 32.0
 
 [node name="player" type="Node2D" unique_id=1704506454]
 script = ExtResource("1_opy1n")
@@ -28,46 +26,6 @@ unique_name_in_owner = true
 scale = Vector2(1.0000002, 1.0000001)
 shape = SubResource("CircleShape2D_opy1n")
 
-[node name="texture" type="Control" parent="." unique_id=1425323071]
+[node name="sprite" type="Sprite2D" parent="." unique_id=1995725119]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -64.0
-offset_right = 25.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="side" type="TextureRect" parent="texture" unique_id=1200061884]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_umfja")
-
-[node name="top" type="TextureRect" parent="texture" unique_id=183234271]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 24.0
-grow_horizontal = 2
-texture = ExtResource("3_hwf6r")
-expand_mode = 5
-
-[node name="bottom" type="TextureRect" parent="texture" unique_id=898968391]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("4_osv2l")
-expand_mode = 5
+texture = ExtResource("2_q1du6")

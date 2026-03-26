@@ -11,6 +11,8 @@ var active:bool = false
 
 var stretch_y:float = 1
 
+var black_holes:Array[BlackHole] = []
+
 func _ready() -> void:
 	collision = %collision
 

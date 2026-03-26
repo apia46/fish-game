@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dmg8lpwf636l1" path="res://scripts/Bar.gd" id="3_x7blo"]
 [ext_resource type="PackedScene" uid="uid://kmro4rd27hn8" path="res://scenes/space_player.tscn" id="4_qsmat"]
 [ext_resource type="PackedScene" uid="uid://brsgkc8h0s34t" path="res://scenes/star_fish.tscn" id="5_yk4f3"]
+[ext_resource type="Texture2D" uid="uid://dy8yx4r4687fq" path="res://assets/level_4/progress_fill.png" id="7_x7blo"]
 
 [node name="level_4" type="Control" unique_id=356871724]
 layout_mode = 3
@@ -23,8 +24,10 @@ offset_bottom = 648.0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1113667606]
+handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(1152, 648)
+render_target_update_mode = 4
 
 [node name="world" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1211775360]
 unique_name_in_owner = true
@@ -87,3 +90,4 @@ drag_vertical_enabled = true
 [node name="hud" parent="." unique_id=98241740 instance=ExtResource("2_ycko3")]
 unique_name_in_owner = true
 layout_mode = 1
+progress_fill = ExtResource("7_x7blo")

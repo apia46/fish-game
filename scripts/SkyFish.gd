@@ -5,7 +5,7 @@ const STATE_TARGET:int = 2
 
 const PHASES:Array[float] = [0, 0.125, 0.5, 1]
 
-const PLAYER_INFLUENCE:float = 160
+const PLAYER_INFLUENCE:float = 200
 
 func start() -> void:
 	position.x = bar.size.x/2
@@ -27,7 +27,7 @@ func phase_increased() -> void:
 
 func progress_increment() -> float:
 	var distance:float = abs(position.y - bar.player.position.y)
-	if distance <= PLAYER_INFLUENCE: return (PLAYER_INFLUENCE-distance)/PLAYER_INFLUENCE/60
+	if distance <= PLAYER_INFLUENCE: return (PLAYER_INFLUENCE-distance)/PLAYER_INFLUENCE/40
 	return 1.0/60
 
 func target(set_target:float=NAN) -> void:

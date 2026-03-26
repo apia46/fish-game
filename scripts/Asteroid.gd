@@ -8,6 +8,7 @@ const TEXTURES:Array[Texture2D] = [
 ]
 
 @onready var parent:Circle = get_parent()
+var fish:StarFish
 var phase:float = 0
 var speed:float = 1
 
@@ -19,3 +20,8 @@ func _process(delta: float) -> void:
 	phase += delta * speed
 	if phase > TAU: phase -= TAU
 	position = Vector2(parent.orbit_radius, 0).rotated(phase)
+
+func _bumped(area: Area2D) -> void:
+	if parent.asteroid_opacity < 0.5: return
+	if area.get_parent() is Player:
+		fish.asteroid_bumped()

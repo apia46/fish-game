@@ -8,7 +8,10 @@ func _process(delta: float) -> void:
 	var direction:Vector2 = get_local_mouse_position().normalized()
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		velocity += direction * delta * 350
-		
+
+	for black_hole in black_holes:
+		velocity += (black_hole.position - position).normalized() * delta * 2e7/black_hole.position.distance_squared_to(position)
+
 	position += velocity * delta
 
 	if position.y < EDGE_MARGIN: # bounce off top
@@ -35,6 +38,8 @@ func _process(delta: float) -> void:
 	%velocityArrow.color = speed_color
 	%velocityLine.default_color = speed_color
 
+	%sprite.rotation = velocity.angle() + PI/2
+
 func _input(event: InputEvent) -> void:
 	if !active: return
 	if event is InputEventKey and event.pressed and !event.echo:
@@ -42,3 +47,6 @@ func _input(event: InputEvent) -> void:
 			KEY_SPACE:
 				velocity = velocity.rotated(velocity.angle_to(get_local_mouse_position())) * 0.8
 				if bar.fish.collision in %collision.get_overlapping_areas(): bar.fish.progress += bar.fish.progress_increment() * 0.2
+
+func _draw() -> void:
+	draw_circle(Vector2.ZERO, StarFish.PLAYER_INFLUENCE, Color.WHITE, false, 4)
