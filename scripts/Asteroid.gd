@@ -24,4 +24,4 @@ func _process(delta: float) -> void:
 func _bumped(area: Area2D) -> void:
 	if parent.asteroid_opacity < 0.5: return
 	if area.get_parent() is Player:
-		fish.asteroid_bumped()
+		fish.asteroid_bumped(0.5)

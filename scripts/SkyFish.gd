@@ -3,7 +3,7 @@ class_name SkyFish
 
 const STATE_TARGET:int = 2
 
-const PHASES:Array[float] = [0, 0.125, 0.5, 1]
+const PHASES:Array[float] = [0, 0.125, 1.0/3, 0.75, 1]
 
 const PLAYER_INFLUENCE:float = 200
 
@@ -23,10 +23,14 @@ func phase_increased() -> void:
 			cancel_timers(STATE_TARGET)
 			await get_tree().create_timer(0.3).timeout
 			target(400)
+		3:
+			game.level.summon_bird()
+			cancel_timers(STATE_TARGET)
+			target(1400)
 
 func progress_increment() -> float:
 	var distance:float = abs(position.y - bar.player.position.y)
-	if distance <= PLAYER_INFLUENCE: return (PLAYER_INFLUENCE-distance)/PLAYER_INFLUENCE/2
+	if distance <= PLAYER_INFLUENCE: return (PLAYER_INFLUENCE-distance)/PLAYER_INFLUENCE/40
 	return 1.0/60
 
 func target(set_target:float=NAN) -> void:
@@ -41,7 +45,7 @@ func target(set_target:float=NAN) -> void:
 		velocity.x = 0
 
 func new_target_height() -> float:
-	if phase < 2: return randf_range(bar.size.y-600+HALF_HEIGHT,bar.size.y-HALF_HEIGHT-100)
+	if phase != 2: return randf_range(bar.size.y-600+HALF_HEIGHT,bar.size.y-HALF_HEIGHT-100)
 	else: return randf_range(max(HALF_HEIGHT+200, position.y-500), min(bar.size.y-HALF_HEIGHT-100, position.y+500))
 
 func is_target_okay(target_position:Vector2) -> bool:
@@ -52,5 +56,8 @@ func targetting_speed() -> float:
 	return 0.66 if phase >= 2 else 0.4
 
 func bird_hit_player() -> void:
+	if !active: return
 	bar.player.rotation_offset += -0.5 if randf() > 0.5 else 0.5
 	penalty(1)
+
+func get_stats() -> String: return "Flying Fish: %.1fs / %.1f%%" % [real_time, (1 - time_unhooked/time)*100]

@@ -57,8 +57,8 @@ func zoomies() -> void:
 func swipe_probability() -> float:
 	match phase:
 		0: return 0.3
-		1: return 0.2
-		2, _: return 0.1
+		1: return 0.25
+		2, _: return 0.2
 
 func swipe(times:int) -> void:
 	cancel_timers(STATE_TARGET)
@@ -84,6 +84,7 @@ func swipe(times:int) -> void:
 		var tween:Tween = get_tree().create_tween()
 		tween.tween_property(level.swipe, ^"modulate:a", 0, 0.6)
 		tween.parallel().tween_property(level.swipe, ^"offset:y", -90, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		game.level.cat_swipe()
 		await get_tree().create_timer(0.9).timeout
 
 func hit() -> void:
@@ -101,3 +102,5 @@ class Telegraph extends Sprite2D:
 		tween.tween_property(self, ^"modulate:a", 0, 0.6)
 		tween.parallel().tween_property(self, ^"offset:y", -10, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		tween.tween_callback(queue_free)
+
+func get_stats() -> String: return "Cat Fish: %.1fs / %.1f%%" % [real_time, (1 - time_unhooked/time)*100]

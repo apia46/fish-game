@@ -59,3 +59,5 @@ func dash() -> void:
 func phase_increased() -> void:
 	if phase == 1:
 		texture = preload("res://assets/level_1/shark_fish_2.png")
+
+func get_stats() -> String: return "Shark Fish: %.1fs / %.1f%%" % [real_time, (1 - time_unhooked/time)*100]

@@ -52,3 +52,5 @@ func dash() -> void:
 	var dash_timer:ProcessTimer = create_oneshot_process_timer(STATE_DASH, 1, target)
 	dash_timer.process_function = func(delta:float) -> void:
 		velocity -= sign(velocity) * delta * 80
+
+func get_stats() -> String: return "Tutorial: %.1fs / %.1f%%" % [real_time, (1 - time_unhooked/time)*100]

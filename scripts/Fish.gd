@@ -23,6 +23,8 @@ var time_hooked:float = 0
 var phase:int = 0
 var progress:float = 0
 
+var real_time:float = 0
+
 var active:bool = false
 
 @onready var level:Level = game.level
@@ -31,6 +33,7 @@ func _process(delta: float) -> void:
 	if !active: return
 	position += velocity * delta
 	position.y = clamp(position.y, HALF_HEIGHT, bar.size.y-HALF_HEIGHT)
+	real_time += delta
 	if !has_state(STATE_NONPROGRESS):
 		self_modulate.a = 1
 		time += delta
@@ -115,6 +118,10 @@ func cancel_timer(id:int, why:String) -> void:
 	timers.erase(id)
 	states.erase(id)
 
+func cancel_all_timers() -> void:
+	for id in states.keys(): cancel_timer(id, "cancel all timers")
+
 @abstract func start() -> void
 @abstract func phase_increased() -> void
 @abstract func progress_increment() -> float
+@abstract func get_stats() -> String

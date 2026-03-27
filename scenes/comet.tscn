@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cdh5p0btkqn88"]
+
+[ext_resource type="Texture2D" uid="uid://dsdxroyn8rqx3" path="res://assets/level_4/comet.png" id="1_e3cmu"]
+[ext_resource type="Script" uid="uid://bcmlgyahv0gqj" path="res://scripts/Comet.gd" id="2_67ubc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_na7yf"]
+radius = 7.0
+
+[node name="comet" type="Sprite2D" unique_id=1436571024]
+scale = Vector2(2, 2)
+texture = ExtResource("1_e3cmu")
+offset = Vector2(0, 36)
+script = ExtResource("2_67ubc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=621616691]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1940771750]
+shape = SubResource("CircleShape2D_na7yf")
+
+[connection signal="area_entered" from="Area2D" to="." method="_bumped"]

@@ -33,4 +33,5 @@ unique_name_in_owner = true
 z_index = -1
 amount = 16
 texture = ExtResource("2_hcryv")
+visibility_rect = Rect2(-100, -100, 200, 500)
 process_material = SubResource("ParticleProcessMaterial_1p8ph")

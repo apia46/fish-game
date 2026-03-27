@@ -39,6 +39,7 @@ offset_right = 1652.0
 offset_bottom = 1148.0
 
 [node name="bg" type="ColorRect" parent="SubViewportContainer/SubViewport/world" unique_id=1187434468]
+z_index = -2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,11 +50,13 @@ color = Color(0, 0, 0, 1)
 
 [node name="stars" type="Node2D" parent="SubViewportContainer/SubViewport/world" unique_id=1458567095]
 unique_name_in_owner = true
+z_index = -2
 position = Vector2(1076, 824)
 script = ExtResource("2_x7blo")
 
 [node name="stars_bg" type="Node2D" parent="SubViewportContainer/SubViewport/world" unique_id=478108530]
 unique_name_in_owner = true
+z_index = -2
 position = Vector2(1076, 824)
 script = ExtResource("2_x7blo")
 
@@ -73,12 +76,12 @@ unique_name_in_owner = true
 position = Vector2(1074, 848)
 
 [node name="fish" parent="SubViewportContainer/SubViewport/world/bar" unique_id=1074441806 instance=ExtResource("5_yk4f3")]
-position = Vector2(1004, 788)
+position = Vector2(1079, 737)
 scale = Vector2(2, 2)
 
 [node name="camera" type="Camera2D" parent="SubViewportContainer/SubViewport/world" unique_id=1907301231]
 unique_name_in_owner = true
-position = Vector2(576, 324)
+position = Vector2(1076, 1400)
 limit_left = -500
 limit_top = -500
 limit_right = 1652
@@ -91,3 +94,18 @@ drag_vertical_enabled = true
 unique_name_in_owner = true
 layout_mode = 1
 progress_fill = ExtResource("7_x7blo")
+
+[node name="end" type="Node2D" parent="." unique_id=867362805]
+unique_name_in_owner = true
+
+[node name="overlay" type="ColorRect" parent="." unique_id=2119142875]
+unique_name_in_owner = true
+z_index = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)

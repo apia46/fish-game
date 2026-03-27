@@ -12,3 +12,5 @@ func start() -> void:
 func stop() -> void:
 	player.active = false
 	fish.active = false
+	fish.cancel_all_timers()
+	fish.self_modulate.a = 1

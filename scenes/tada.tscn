@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bpg0bav50s7va"]
+
+[ext_resource type="Texture2D" uid="uid://cvtjl74i071g5" path="res://assets/tada.png" id="1_gl87q"]
+[ext_resource type="Script" uid="uid://dyg5uch0shwxh" path="res://scripts/Tada.gd" id="1_sci3k"]
+[ext_resource type="Script" uid="uid://bn4pv818g8mth" path="res://scripts/CurvedText.gd" id="2_odywm"]
+[ext_resource type="FontFile" uid="uid://dkrhhly1w4ac0" path="res://resources/dynapuff.ttf" id="3_caush"]
+
+[sub_resource type="Curve2D" id="Curve2D_b6m83"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -139, -103, -0.35971746, -45.684116, 0.35971746, 45.684116, -168, -15, -19.779846, -28.339281, 19.779846, 28.339281, -137, 75, -80, 0, 80, 0, 0, 145, -22.88348, 38.815018, 22.88348, -38.815018, 152, 56, 0, 0, 0, 0, 170, -15, 0, 0, 0, 0, 170, -195)
+}
+point_count = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6axj"]
+font = ExtResource("3_caush")
+font_size = 32
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="tada" type="Node2D" unique_id=1205997001]
+z_index = 1
+script = ExtResource("1_sci3k")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1499111352]
+unique_name_in_owner = true
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("1_gl87q")
+
+[node name="text" type="Path2D" parent="." unique_id=1487895774]
+unique_name_in_owner = true
+position = Vector2(0, 15)
+curve = SubResource("Curve2D_b6m83")
+script = ExtResource("2_odywm")
+text = "You caught a... hey where are you going"
+label_settings = SubResource("LabelSettings_w6axj")
+text_cutoff = 0
+metadata/_custom_type_script = "uid://bn4pv818g8mth"
