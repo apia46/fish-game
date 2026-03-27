@@ -14,7 +14,6 @@ func start() -> void:
 func touching_player() -> bool: return abs(position.y - bar.player.position.y) < PLAYER_INFLUENCE
 
 func phase_increased() -> void:
-	
 	match phase:
 		1:
 			game.level.summon_bird()
@@ -27,7 +26,7 @@ func phase_increased() -> void:
 
 func progress_increment() -> float:
 	var distance:float = abs(position.y - bar.player.position.y)
-	if distance <= PLAYER_INFLUENCE: return (PLAYER_INFLUENCE-distance)/PLAYER_INFLUENCE/40
+	if distance <= PLAYER_INFLUENCE: return (PLAYER_INFLUENCE-distance)/PLAYER_INFLUENCE/2
 	return 1.0/60
 
 func target(set_target:float=NAN) -> void:

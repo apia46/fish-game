@@ -3,6 +3,8 @@ class_name PlanePlayer
 
 var rotation_offset:float = 0
 
+var can_input:bool = true
+
 func half_height() -> float: return 64
 
 func _ready() -> void: pass
@@ -10,7 +12,7 @@ func _ready() -> void: pass
 func _process(delta: float) -> void:
 	if !active: return
 	velocity.y += delta * lerp(70, 100, position.y/bar.size.y) # gravity
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT): velocity.y += delta * -350
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and can_input: velocity.y += delta * -350
 		
 	position += velocity * delta
 
@@ -35,7 +37,7 @@ func _process(delta: float) -> void:
 	%sprite.rotation = velocity.y * 0.002 + rotation_offset
 
 func _input(event: InputEvent) -> void:
-	if !active: return
+	if !active or !can_input: return
 	if event is InputEventKey and event.pressed and !event.echo:
 		match event.keycode:
 			KEY_SPACE:

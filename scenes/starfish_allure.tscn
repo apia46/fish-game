@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bj0ddahr0g40p"]
+
+[ext_resource type="Texture2D" uid="uid://dljo8yjh2byuv" path="res://assets/level_4/starfish.png" id="1_fobnc"]
+[ext_resource type="Texture2D" uid="uid://cg2o0icy0ek4o" path="res://assets/level_3/star_2.png" id="2_hcryv"]
+[ext_resource type="Script" uid="uid://c3g3j54lt6sah" path="res://scripts/StarFishAllure.gd" id="2_xkfw2"]
+
+[sub_resource type="Gradient" id="Gradient_xkfw2"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.98333335, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b2ikk"]
+gradient = SubResource("Gradient_xkfw2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1p8ph"]
+particle_flag_disable_z = true
+spread = 25.909
+initial_velocity_min = 50.969997
+initial_velocity_max = 203.87999
+angular_velocity_min = -360.0
+angular_velocity_max = 359.99997
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_b2ikk")
+
+[node name="starfish_allure" type="Sprite2D" unique_id=1329063066]
+z_index = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_fobnc")
+script = ExtResource("2_xkfw2")
+
+[node name="particles" type="GPUParticles2D" parent="." unique_id=1863340037]
+unique_name_in_owner = true
+z_index = -1
+amount = 16
+texture = ExtResource("2_hcryv")
+process_material = SubResource("ParticleProcessMaterial_1p8ph")

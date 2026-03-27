@@ -15,8 +15,16 @@ func win() -> void:
 	%bar.stop()
 
 	await get_tree().create_timer(0.5).timeout
+	var starfish:Sprite2D = preload("res://scenes/starfish_allure.tscn").instantiate()
+	%bar.add_child(starfish)
+	starfish.position = %camera.get_screen_center_position() - %bar.global_position + Vector2(100, -400)
+	var tween = get_tree().create_tween()
+	starfish.velocity = 400
+	starfish.rot = 4.3
+	tween.tween_property(starfish, ^"rot", 8, 2)
+	await tween.finished
+
 	game.win_text.visible = false
-	game.start_level(preload("res://scenes/level_4.tscn"))
 
 func summon_bird() -> void:
 	var bird:Bird = preload("res://scenes/bird.tscn").instantiate()
