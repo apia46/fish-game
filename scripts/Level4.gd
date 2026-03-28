@@ -4,6 +4,7 @@ class_name Level4
 func start() -> void:
 	if !game.skip_tutorials:
 		await GamePopup.create(self, "In space, you accelerate and dash towards your mouse position.", "Okay").closed
+		await GamePopup.create(self, "Reminder: You can dash repeatedly to gain extra progress.", "Okay").closed
 		await GamePopup.create(self, "Avoid bumping into things.", "What things?").closed
 	%bar.start()
 

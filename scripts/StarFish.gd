@@ -36,6 +36,11 @@ func phase_increased() -> void:
 			await get_tree().create_timer(0.5).timeout
 			game.level.summon_black_hole(600)
 
+func _process(delta: float) -> void:
+	super(delta)
+	if !active: return
+	position.x = clamp(position.x, HALF_HEIGHT, bar.size.x-HALF_HEIGHT)
+
 func progress_increment() -> float:
 	var distance:float = abs(position.y - bar.player.position.y)
 	if distance <= PLAYER_INFLUENCE: return (PLAYER_INFLUENCE-distance)/PLAYER_INFLUENCE/60
@@ -73,7 +78,6 @@ func orbit(radius:float, rotation_phase:float, speed:float, asteroid_count:int, 
 		orbit_position = Vector2(randf_range(RADIUS,bar.size.x-RADIUS), randf_range(RADIUS,bar.size.y-RADIUS))
 		while !is_orbit_okay(orbit_position):
 			orbit_position = Vector2(randf_range(RADIUS,bar.size.x-RADIUS), randf_range(RADIUS,bar.size.y-RADIUS))
-		velocity = Vector2.ZERO
 
 	var circle:Circle = Circle.new()
 	add_child(circle)
@@ -108,7 +112,9 @@ func orbit(radius:float, rotation_phase:float, speed:float, asteroid_count:int, 
 			target()
 		)
 	)
-	if new_target: timer.process_function = func(delta): position = orbit_position - (orbit_position - position) * 0.1**delta
+	if new_target: timer.process_function = func(delta):
+		velocity = Vector2.ZERO
+		position = orbit_position - (orbit_position - position) * 0.1**delta
 	else: timer.process_function = func(_delta): pass
 
 func is_orbit_okay(target_position:Vector2) -> bool:
